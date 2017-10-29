@@ -1,0 +1,3 @@
+Hello.
+My name is Will.
+I coded this function as part of a practical for python.
