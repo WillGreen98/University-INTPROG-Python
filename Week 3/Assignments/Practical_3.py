@@ -1,4 +1,6 @@
 import graphics as g
+import random
+
 
 def drawStickFigure():
     window = g.GraphWin("Stick MAAAAAN", 200, 200)
@@ -15,6 +17,7 @@ def drawStickFigure():
     window.getMouse()
     window.close()
 
+
 def drawACircle():
     window = g.GraphWin("Draw Circle", 200, 200)
 
@@ -23,6 +26,7 @@ def drawACircle():
 
     window.getMouse()
     window.close()
+
 
 def bowAndArrow():
     window = g.GraphWin("Archery Target", 300, 300)
@@ -34,6 +38,7 @@ def bowAndArrow():
 
     window.getMouse()
     window.close()
+
 
 def drawRectangle():
     window = g.GraphWin("Long Square", 300, 300)
@@ -47,6 +52,7 @@ def drawRectangle():
     window.getMouse()
     window.close()
 
+
 def click_BlueCircle():
     window = g.GraphWin("Blue Circle")
     usr_Click = window.getMouse()
@@ -56,9 +62,10 @@ def click_BlueCircle():
     window.getMouse()
     window.close()
 
+
 def drawLine():
     window = g.GraphWin("Line drawer")
-    message = g.Text(g.Point(100,100), "Click on first point")
+    message = g.Text(g.Point(100, 100), "Click on first point")
     message.draw(window)
     p1 = window.getMouse()
     message.setText("Click on second point")
@@ -70,9 +77,11 @@ def drawLine():
     window.getMouse()
     window.close()
 
+
 def drawLine_Ten():
     for i in range(10):
         drawLine()
+
 
 def tenStrings():
     window = g.GraphWin("Ten Strings", 500, 500)
@@ -84,4 +93,40 @@ def tenStrings():
 
     window.getMouse()
     window.close()
+
+
+def tenfilledRects():
+    window = g.GraphWin("Ten Strings", 500, 500)
+
+    for i in range(10):
+        # inputBox = g.Entry(g.Point(50, 30), 10)
+        # inputBox.draw(window)
+
+        r = random.randrange(256)
+        b = random.randrange(256)
+        g = random.randrange(256)
+        rand_Color = g.color_rgb(r, g, b)
+
+        coord_One = window.getMouse()
+        coord_Two = window.getMouse()
+
+        rectangle = g.Rectangle(g.Point(coord_One.getX(), coord_One.getY()), g.Point(coord_Two.getX(),
+                                                                                     coord_Two.getY())).draw(
+            window).setFill(rand_Color)
+
+    window.getMouse()
+    window.close
+
+def click_stickFigure():
+    window = g.GraphWin("Click Stick Figure", 500, 500)
+
+    coord_One_Head = window.getMouse()
+    coord_Two_Head = window.getMouse()
+
+    radius = (((coord_Two_Head.getX() - coord_One_Head.getX()) ** 2) + (coord_Two_Head.getY() - coord_Two_Head.getY()) ** 2) ** 0.5
+
+    body_Head = g.Circle(coord_One_Head, radius).draw(window)
+
+    coord_Three_Body = window.getMouse()
+    body_Line = g.Line(g.Point(coord_Two_Head.getX(), coord_Two_Head.getX()), coord_Three_Body).draw(window)
 
