@@ -1,22 +1,40 @@
-from graphics import *
+import graphics as g
 import math
 
-# For exercises 1 and 2
+def areaOfCircle(radius):
+    return math.pi * (radius ** 2)
+
+def circumferenceOfCircle(radius):
+    return 2 * math.pi * radius
+
 def areaOfCircle(radius):
     return math.pi * radius ** 2
 
-# For exercise 3
-def drawCircle(win, centre, radius, colour):
-    circle = Circle(centre, radius)
+def circleInfo():
+    radius = float(input("Enter for radis: "))
+    print("Area: ", areaOfCircle(radius), "\n"
+          "Circumference: ", circumferenceOfCircle(radius))
+
+def drawCircle(window, centre, radius, colour):
+    circle = g.Circle(centre, radius)
     circle.setFill(colour)
     circle.setWidth(2)
-    circle.draw(win)
+    circle.draw(window)
+
+def drawStars(height, width):
+    for i in range(height):
+        print("*" * width)
+
+def drawLetter_E():
+    drawStars(8, 3)
+    drawStars(2, 3)
+    drawStars(6, 3)
+    drawStars(2, 3)
+    drawStars(8, 3)
 
 def drawBrownEyeInCentre():
-    window = GraphWin()
-    # Add your code here
+    window = g.GraphWin()
 
-# For exercise 5
-def drawBrownEye(win, centre, radius):
+
+def drawBrownEye(window, centre, radius):
     pass
-    # Remove pass and add your code her
