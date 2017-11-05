@@ -1,5 +1,5 @@
 import graphics as g
-import random
+import random as rand
 
 
 def drawStickFigure():
@@ -122,11 +122,36 @@ def click_stickFigure():
 
     coord_One_Head = window.getMouse()
     coord_Two_Head = window.getMouse()
+    coord_Three_Body = window.getMouse()
+    coord_Four_Body = window.getMouse()
+    coord_Five_Leg = window.getMouse()
 
+    # Radius = distance between two points becuase it is a click
     radius = (((coord_Two_Head.getX() - coord_One_Head.getX()) ** 2) + (coord_Two_Head.getY() - coord_Two_Head.getY()) ** 2) ** 0.5
 
     body_Head = g.Circle(coord_One_Head, radius).draw(window)
-
-    coord_Three_Body = window.getMouse()
     body_Line = g.Line(g.Point(coord_Two_Head.getX(), coord_Two_Head.getX()), coord_Three_Body).draw(window)
 
+    dist_Arms = coord_Four_Body.getX() - coord_Three_Body.getX()
+
+    body_Arms = g.Line(g.Point(coord_Four_Body.getX(), coord_Four_Body.getY()),
+                       g.Point(coord_Four_Body.getY() - dist_Arms, coord_Four_Body.getY())).draw(window)
+
+    dist_Legs = coord_Five_Leg.getX() - coord_Three_Body.getX()
+
+    leg_Left = g.Line(coord_Five_Leg, coord_Three_Body).draw(window)
+    leg_Right = g.Line(g.Point(coord_Five_Leg.getX() - dist_Legs), coord_Three_Body).draw(window)
+
+def rainFall_Graph():
+    window = g.GraphWin("RainFall", 400, 400)
+
+    usr_In = g.Entry(g.Point(40, 40), 10).draw(window)
+
+    for i in range(7):
+        window.getMouse()
+        dim = int(usr_In.getText())
+        rectangle = g.Rectangle(g.Point(), g.Point()).draw(window).setFill(rand.choice(
+                                            ["black", "blue", "green", "yellow", "orange", "red"]))
+        window.getMouse()
+
+rainFall_Graph()
