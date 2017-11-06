@@ -39,8 +39,26 @@ def drawBrownEye(window, centre, radius):
 
 
 def drawPairBrownEyes(window, centre, radius):
+    window = g.GraphWin()
+
     drawBrownEye(window, g.Point(90, 100))
     drawBrownEye(window, g.Point(100, 120))
 
+    window.getMouse()
 
+def distBetweenPoints(a, b):
+    return math.sqrt((b.getX() - a.getX()) ** 2 + (b.getY() - a.getY()) ** 2)
+
+def drawStars_Gap(gap_One, star_One, gap_Two, star_Two, row):
+    for i in range(row):
+        print(" " * gap_One, end= "")
+        print("*" * star_One, end="")
+        print(" " * gap_Two, end="")
+        print("*" * star_Two, end="")
+
+def drawLetter_A():
+    drawStars_Gap(1, 8, 0, 0, 2)
+    drawStars_Gap(0, 2, 6, 2, 2)
+    drawStars_Gap(0, 10, 0, 0, 2)
+    drawStars_Gap(0, 2, 6, 2, 3)
 
