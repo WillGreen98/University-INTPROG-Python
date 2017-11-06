@@ -102,9 +102,9 @@ def tenfilledRects():
         # inputBox = g.Entry(g.Point(50, 30), 10)
         # inputBox.draw(window)
 
-        r = random.randrange(256)
-        b = random.randrange(256)
-        g = random.randrange(256)
+        r = rand.randrange(256)
+        b = rand.randrange(256)
+        g = rand.randrange(256)
         rand_Color = g.color_rgb(r, g, b)
 
         coord_One = window.getMouse()

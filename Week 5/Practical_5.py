@@ -92,3 +92,33 @@ def constructVisionChart():
     dy = 50
 
     for size in font_Sizes:
+        usr_In = g.Entry(g.Point(40, 40), 10).draw(window)
+
+        window.getMouse()
+
+        displayTextWithSpaces(window, usr_In.getText(), size,
+                              g.Point(dx, dy))
+
+        dx -= 10
+        dy += 30
+    window.getMouse()
+
+def drawStickFigure(window, size, pos):
+
+    coord_X = pos.getX()
+    coord_Y = pos.getY()
+
+    head = g.Circle(g.Point(100, 60), 20).draw(window)
+    body = g.Line(g.Point(100, 80), g.Point(100, 120)).draw(window)
+
+    left_Arm = g.Line(g.Point(80, 80), g.Point(100, 90)).draw(window)
+    right_Arm = g.Line(g.Point(120, 80), g.Point(100, 90)).draw(window)
+
+    left_Leg = g.Line(g.Point(100, 120), g.Point(80, 140)).draw(window)
+    right_Leg = g.Line(g.Point(100, 120), g.Point(120, 140)).draw(window)
+
+    window.getMouse()
+
+def drawStickFigure_Family():
+    window = g.GraphWin("It da Peeeps", 400, 400)
+    drawStickFigure(window, 40, g.Point(100, 100))
