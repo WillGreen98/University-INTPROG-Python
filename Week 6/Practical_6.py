@@ -4,16 +4,18 @@
 # your six-digit student number
 #-------------------------------------------------------------------------------
 
-from graphics import *
+import graphics as g
+import math
 
-# For exercises 8 & 11
+def distBetweenPoints(a, b):
+    return math.sqrt((b.getX() - a.getX()) ** 2 + (b.getY() - a.getY()) ** 2)
+
 def drawCircle(win, centre, radius, colour):
-    circle = Circle(centre, radius)
+    circle = g.Circle(centre, radius)
     circle.setFill(colour)
     circle.setWidth(2)
     circle.draw(win)
 
-# For exercise 8 
 def drawColouredEye(win, centre, radius, colour):
     pass
-    # remove the pass and add your code here
+
