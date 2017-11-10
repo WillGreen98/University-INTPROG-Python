@@ -77,5 +77,11 @@ def ticketPrice(age, distance):
 
     return discount * (3.00 + (0.15 * distance))
 
-def numberedSquare(n):
+def numberedSquare(num):
+    for i in range(num, 0, -1):
+        for j in range(num):
+            print(str(i + j), end= " ")
+        print("")
+
+def drawPatchWindow():
     a = 5
