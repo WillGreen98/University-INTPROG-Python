@@ -6,6 +6,7 @@
 
 import graphics as g
 import math
+import random as rand
 
 def distBetweenPoints(a, b):
     return math.sqrt((b.getX() - a.getX()) ** 2 + (b.getY() - a.getY()) ** 2)
@@ -104,4 +105,49 @@ def drawPatchWindow():
 
     window.getMouse()
 
-drawPatchWindow()
+def eyesAllAround():
+    window = g.GraphWin("Eyes All Around")
+
+    colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+    colors_score = 0
+
+    for i in range(0, 30):
+        drawColouredEye(window, window.getMouse(),30, colors[colors_score])
+        colors_score =+1
+
+        if colors_score == 4:
+            colors_score = 0
+    window.getMouse()
+
+
+def archeryGame():
+    window = g.GraphWin("Archery Game", 200, 200)
+
+    drawCircle(window, g.Point(100, 100), 50, "")
+    drawCircle(window, g.Point(100, 100), 30, "brown")
+    drawCircle(window, g.Point(100, 100), 15, "black")
+
+    score = 0
+    score_Label = g.Text(g.Point(40, 40), "").draw(window)
+
+    for i in range(5):
+        click = window.getMouse()
+        distance = distBetweenPoints(click, g.Point(100, 100))
+
+        drawCircle(window, g.Point(click.getX() + rand.randint(-10, 10),
+                            g.Point(click.getY() + rand.randint(-10, 10)), 10), "pink")
+
+        if distance <= 60 and distance >= 30:
+            score += 2
+            score_Label.setText("2 Points")
+        elif distance <= 30 and distance >= 15:
+            score += 5
+            score_Label.setText("5 Points")
+        elif distance <= 15:
+            score += 10
+            score_Label.setText("10 Points")
+        else:
+            score_Label.setText("Missed")
+
+    score_Label.setText("Total: ", score)
+    window.getMouse()
