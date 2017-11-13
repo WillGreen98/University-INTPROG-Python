@@ -83,5 +83,25 @@ def numberedSquare(num):
             print(str(i + j), end= " ")
         print("")
 
+def eyeColor():
+    window = g.GraphWin("Eye Color", 200, 200)
+
+    size = int(input("Enter size: "))
+    color = input("Enter colour".lower())
+    pos = int(input("Enter position, x then y: ").split())
+
+    drawColouredEye(window, g.Point(pos[0], pos[1]), size, color)
+
+    window.getMouse()
+
+#TODO
 def drawPatchWindow():
-    a = 5
+    window = g.GraphWin("ID Num 9", 1000, 1000)
+
+    top_Left_X = 0
+    top_Left_Y = 0
+
+
+    window.getMouse()
+
+drawPatchWindow()
