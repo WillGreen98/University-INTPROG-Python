@@ -111,4 +111,61 @@ def clickEye():
 
         if distance <= 25:
             text.setText("Pupil")
-        elif
+        elif distance <= 50:
+            text.setText("Iris")
+        elif distance <= 100:
+            text.setText("Sclera")
+        else:
+            break
+
+def temperatureConverter():
+    while True:
+        temp_In = input("Enter temp C/F: ")
+
+        if temp_In is not None:
+            temp = temp_In.split[0:1]
+            if temp_In[2].find('c'.lower()):
+                celsius2Fahrenheit(temp)
+            elif temp_In[2].find('f'.lower()):
+                fahrenheit2Celsius(temp)
+            else:
+               break
+        else:
+            print("Invalid input")
+            break
+
+def guessNumber():
+    gussed = False
+    rand_Num = rand.randint(0, 50)
+
+    for guess_Counter in range(0, 10):
+        guess = int(input("Enter guess: "))
+
+        if guess < rand_Num:
+            print("Too Low")
+        elif guess > rand_Num:
+            print("Too High")
+        elif guess == rand_Num:
+            print("Correct, you guessed in: ", guess_Counter, " tries")
+            gussed = True
+            break
+    if gussed == False:
+        print("Too many guesses")
+
+def tableTennisScorer():
+    window = g.GraphWin("Table Tennis")
+
+    player_One_Score = 0
+    player_Two_Score = 0
+
+    player_One_Text = g.Text(g.Point(50, 50), "0").draw(window).setSize(12)
+    player_Two_Text = g.Text(g.Point(100, 50), "0").draw(window).setSize(12)
+    player__One_Win_Text = g.Text(g.Point(50, 75), "").draw(window).setSize(12)
+    player_Two_Win_Text = g.Text(g.Point(150, 75), "").draw(window).setSize(12)
+
+    boarder_Reft = g.Rectangle(g.Point(0, 0), g.Point(100, 200)).draw(window)
+    boarder_Right = g.Rectangle(g.Point(0, 0), g.Point(200, 200)).draw(window)
+
+    while True:
+        click = window.getMouse()
+
