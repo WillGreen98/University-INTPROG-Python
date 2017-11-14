@@ -80,3 +80,35 @@ def askaName():
             break
 
 def calculateCourseWork():
+    while True:
+        grade = int(input("Enter Mark: "))
+        if grade.isnumeric() and grade >= 0 and grade <= 20:
+            calculateGrade(grade)
+            break
+        print("Invalid input")
+def orderPrice():
+    total = 0
+    while True():
+        price = float(("Enter Price: £"))
+        if price.isnumeric():
+            volume = int(input("Enter volume: "))
+            if volume.isnumeric():
+                total += (price * volume)
+
+                usr_In = input("Continue: ".lower())
+                if usr_In == 'n' or usr_In == "no":
+                    break
+
+def clickEye():
+    window = g.GraphWin("Clickable Eye", 400, 400)
+    drawColouredEye(window, g.Point(200, 200), 100, "green")
+
+    text = g.Text(g.Point(50, 50), "").draw(window)
+
+    while True:
+        click = window.getMouse()
+        distance = distanceBetweenPoints(click, g.Point(200, 200))
+
+        if distance <= 25:
+            text.setText("Pupil")
+        elif

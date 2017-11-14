@@ -95,13 +95,27 @@ def eyeColor():
 
     window.getMouse()
 
-#TODO
 def drawPatchWindow():
-    window = g.GraphWin("ID Num 9", 1000, 1000)
+    window = g.GraphWin("ID Num 9", 100, 100)
 
-    top_Left_X = 0
-    top_Left_Y = 0
+    for x in range(0, 100, 20):
+        g.Line(g.Point(x, 0), g.Point(100, 100 - x)).draw(window)
+        g.Line(g.Point(100 - x, 0), g.Point(0, 100-x)).draw(window)
 
+        g.Line(g.Point(0, x), g.Point(100 - x, 100)).draw(window)
+        g.Line(g.Point(100, 100 - x), g.Point(100 - x, 100)).draw(window)
+
+
+    window.getMouse()
+
+def drawPatch(window, pos_X, pos_Y):
+    for x in range(pos_X, pos_X + 100, 10):
+        #g.Line(g.Point(x, pos_Y), g.Point(pos_X + 100,  (pos_Y + 100) -x)).draw(window)
+        #g.Line(g.Point((pos_X + 100) - x, pos_Y), g.Point(pos_X, (pos_Y + 100) - x)).draw(window)
+
+        g.Line(g.Point(pos_X, pos_Y + x), g.Point((pos_X + 100) - x, pos_Y + 100)).draw(window)
+        print(pos_X, pos_Y + x, (pos_X + 100) - x, pos_Y + 100)
+        #g.Line(g.Point(pos_X + 100,(pos_Y + 100) - x), g.Point((pos_X + 100) - x, pos_Y + 100)).draw(window)
 
     window.getMouse()
 
@@ -113,7 +127,7 @@ def eyesAllAround():
 
     for i in range(0, 30):
         drawColouredEye(window, window.getMouse(),30, colors[colors_score])
-        colors_score =+1
+        colors_score =+ 1
 
         if colors_score == 4:
             colors_score = 0
@@ -151,3 +165,6 @@ def archeryGame():
 
     score_Label.setText("Total: ", score)
     window.getMouse()
+
+window = g.GraphWin("Grapher", 400, 400)
+drawPatch(window, 100, 100)
