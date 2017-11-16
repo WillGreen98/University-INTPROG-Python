@@ -124,9 +124,9 @@ def temperatureConverter():
 
         if temp_In is not None:
             temp = temp_In.split[0:1]
-            if temp_In[2].find('c'.lower()):
+            if 'c' in temp:
                 celsius2Fahrenheit(temp)
-            elif temp_In[2].find('f'.lower()):
+            elif 'f' in temp:
                 fahrenheit2Celsius(temp)
             else:
                break
@@ -160,7 +160,7 @@ def tableTennisScorer():
 
     player_One_Text = g.Text(g.Point(50, 50), "0").draw(window).setSize(12)
     player_Two_Text = g.Text(g.Point(100, 50), "0").draw(window).setSize(12)
-    player__One_Win_Text = g.Text(g.Point(50, 75), "").draw(window).setSize(12)
+    player_One_Win_Text = g.Text(g.Point(50, 75), "").draw(window).setSize(12)
     player_Two_Win_Text = g.Text(g.Point(150, 75), "").draw(window).setSize(12)
 
     boarder_Reft = g.Rectangle(g.Point(0, 0), g.Point(100, 200)).draw(window)
@@ -169,3 +169,25 @@ def tableTennisScorer():
     while True:
         click = window.getMouse()
 
+        if click.getX() > 100:
+            player_Two_Score += 1
+        else:
+            player_One_Score += 1
+
+        if player_One_Score > 10 and player_One_Score > player_Two_Score:
+            player_One_Win_Text.setText("Player One Wins")
+            break
+
+        if player_Two_Score > 10 and player_Two_Score > player_One_Score:
+            player_Two_Win_Text.setText("Player Two Wins")
+            break
+
+        player_One_Win_Text.setText(player_One_Score)
+        player_Two_Win_Text.setText(player_Two_Score)
+
+    window.getMouse()
+
+def clickableBoxOfEyes(row, col):
+    window = g.GraphWin("")
+
+temperatureConverter()
