@@ -201,6 +201,11 @@ def clickableBoxOfEyes(row, col):
     while True:
         click = window.getMouse()
 
+        eye_X = (click.getX() - 50) / 100
+        eye_Y = (click.getY() - 50) / 100
+
+        text.setText("X: ", eye_X, " Y: ", eye_Y)
+
     window.getMouse()
 
 
