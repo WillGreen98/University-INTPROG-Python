@@ -1,9 +1,3 @@
-#-------------------------------------------------------------------------------
-# Practical Worksheet 6: if statements and for loops
-# your name
-# your six-digit student number
-#-------------------------------------------------------------------------------
-
 import graphics as g
 import math
 import random as rand
@@ -95,6 +89,7 @@ def eyeColor():
 
     window.getMouse()
 
+#TODO patch window task: ID Number 9
 def drawPatchWindow():
     window = g.GraphWin("ID Num 9", 100, 100)
 
@@ -108,6 +103,7 @@ def drawPatchWindow():
 
     window.getMouse()
 
+#TODO patch window task, draw window by x and y
 def drawPatch(window, pos_X, pos_Y):
     for x in range(pos_X, pos_X + 100, 10):
         #g.Line(g.Point(x, pos_Y), g.Point(pos_X + 100,  (pos_Y + 100) -x)).draw(window)

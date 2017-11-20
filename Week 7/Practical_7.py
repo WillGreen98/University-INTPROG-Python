@@ -188,6 +188,20 @@ def tableTennisScorer():
     window.getMouse()
 
 def clickableBoxOfEyes(row, col):
-    window = g.GraphWin("")
+    window = g.GraphWin("Box of eyes", (row * 100) + 100, (col * 100) + 100)
 
-temperatureConverter()
+    border_Interia = g.Rectangle().draw(window)
+    border_Exteria = g.Rectangle().draw(window)
+    text = g.Text().draw(window)
+
+    for x in range(0, row):
+        for y in range(0, col):
+            drawColouredEye()
+
+    while True:
+        click = window.getMouse()
+
+    window.getMouse()
+
+
+clickableBoxOfEyes(4, 4)

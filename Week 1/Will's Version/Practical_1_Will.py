@@ -3,7 +3,6 @@ __project__ = "Prac 1"
 
 import requests
 import math
-import curses #Key Presses
 
 def sayName():
     name = input("Please enter your name: ")

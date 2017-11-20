@@ -1,7 +1,6 @@
 import graphics as g
 import random as rand
 
-
 def drawStickFigure():
     window = g.GraphWin("Stick MAAAAAN", 200, 200)
 
@@ -17,7 +16,6 @@ def drawStickFigure():
     window.getMouse()
     window.close()
 
-
 def drawACircle():
     window = g.GraphWin("Draw Circle", 200, 200)
 
@@ -26,7 +24,6 @@ def drawACircle():
 
     window.getMouse()
     window.close()
-
 
 def bowAndArrow():
     window = g.GraphWin("Archery Target", 300, 300)
@@ -38,7 +35,6 @@ def bowAndArrow():
 
     window.getMouse()
     window.close()
-
 
 def drawRectangle():
     window = g.GraphWin("Long Square", 300, 300)
@@ -52,7 +48,6 @@ def drawRectangle():
     window.getMouse()
     window.close()
 
-
 def click_BlueCircle():
     window = g.GraphWin("Blue Circle")
     usr_Click = window.getMouse()
@@ -61,7 +56,6 @@ def click_BlueCircle():
 
     window.getMouse()
     window.close()
-
 
 def drawLine():
     window = g.GraphWin("Line drawer")
@@ -77,11 +71,9 @@ def drawLine():
     window.getMouse()
     window.close()
 
-
 def drawLine_Ten():
     for i in range(10):
         drawLine()
-
 
 def tenStrings():
     window = g.GraphWin("Ten Strings", 500, 500)
@@ -93,7 +85,6 @@ def tenStrings():
 
     window.getMouse()
     window.close()
-
 
 def tenfilledRects():
     window = g.GraphWin("Ten Strings", 500, 500)
