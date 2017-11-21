@@ -89,13 +89,14 @@ def eyeColor():
 
     window.getMouse()
 
-#TODO patch window task: ID Number 9
+# TODO patch window task: ID Number 9
+# Based on X and Y axis
 def drawPatchWindow():
     window = g.GraphWin("ID Num 9", 100, 100)
 
     for x in range(0, 100, 20):
         g.Line(g.Point(x, 0), g.Point(100, 100 - x)).draw(window)
-        g.Line(g.Point(100 - x, 0), g.Point(0, 100-x)).draw(window)
+        g.Line(g.Point(100 - x, 0), g.Point(0, 100 - x)).draw(window)
 
         g.Line(g.Point(0, x), g.Point(100 - x, 100)).draw(window)
         g.Line(g.Point(100, 100 - x), g.Point(100 - x, 100)).draw(window)
@@ -103,15 +104,14 @@ def drawPatchWindow():
 
     window.getMouse()
 
-#TODO patch window task, draw window by x and y
+# TODO patch window task, draw window by x and y
+# Based on parameters
 def drawPatch(window, pos_X, pos_Y):
     for x in range(pos_X, pos_X + 100, 10):
-        #g.Line(g.Point(x, pos_Y), g.Point(pos_X + 100,  (pos_Y + 100) -x)).draw(window)
-        #g.Line(g.Point((pos_X + 100) - x, pos_Y), g.Point(pos_X, (pos_Y + 100) - x)).draw(window)
-
-        g.Line(g.Point(pos_X, pos_Y + x), g.Point((pos_X + 100) - x, pos_Y + 100)).draw(window)
-        print(pos_X, pos_Y + x, (pos_X + 100) - x, pos_Y + 100)
-        #g.Line(g.Point(pos_X + 100,(pos_Y + 100) - x), g.Point((pos_X + 100) - x, pos_Y + 100)).draw(window)
+        g.Line(g.Point(pos_X, pos_Y), g.Point(pos_X + 100,  (pos_Y + 100) - x)).draw(window)
+        g.Line(g.Point((pos_X + 100) - pos_X, pos_Y), g.Point(pos_X, (pos_Y + 100) - x)).draw(window)
+        g.Line(g.Point(pos_X, pos_Y + pos_X), g.Point((pos_X + 100) - pos_X, pos_Y + 100)).draw(window)
+        g.Line(g.Point(pos_X + 100,(pos_Y + 100) - x), g.Point((pos_X + 100) - x, pos_Y + 100)).draw(window)
 
     window.getMouse()
 
@@ -122,8 +122,8 @@ def eyesAllAround():
     colors_score = 0
 
     for i in range(0, 30):
-        drawColouredEye(window, window.getMouse(),30, colors[colors_score])
-        colors_score =+ 1
+        drawColouredEye(window, window.getMouse(), 30, colors[colors_score])
+        colors_score += 1
 
         if colors_score == 4:
             colors_score = 0
@@ -162,5 +162,7 @@ def archeryGame():
     score_Label.setText("Total: ", score)
     window.getMouse()
 
-window = g.GraphWin("Grapher", 400, 400)
-drawPatch(window, 100, 100)
+window = g.GraphWin("Patch Grapher", 300, 200)
+
+#drawPatchWindow()
+drawPatch(window, 300, 200)
