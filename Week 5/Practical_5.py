@@ -33,14 +33,14 @@ def drawLetter_E():
     drawStars(8, 3)
 
 def drawBrownEye(window, centre, radius):
-    drawBrownEye(window, g.Point(centre, 100), radius, "white")
-    drawBrownEye(window, g.Point(centre, 100), radius / 2, "brown")
-    drawBrownEye(window, g.Point(centre, 100), radius / 4, "black")
+    drawBrownEye(window, g.Point(centre, 100), radius, "White")
+    drawBrownEye(window, g.Point(centre, 100), radius / 2, "Brown")
+    drawBrownEye(window, g.Point(centre, 100), radius / 4, "Black")
 
 def drawBrownEye_NoPoint(window, centre, radius):
-    drawBrownEye(window, centre, radius, "white")
-    drawBrownEye(window, centre, radius / 2, "brown")
-    drawBrownEye(window, centre, radius / 4, "black")
+    drawBrownEye(window, centre, radius, "White")
+    drawBrownEye(window, centre, radius / 2, "Brown")
+    drawBrownEye(window, centre, radius / 4, "Black")
 
 
 def drawBrownEyes_Pair(window, centre, radius):

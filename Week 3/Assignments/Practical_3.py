@@ -142,7 +142,7 @@ def rainFall_Graph():
         window.getMouse()
         dim = int(usr_In.getText())
         rectangle = g.Rectangle(g.Point(), g.Point()).draw(window).setFill(rand.choice(
-                                            ["black", "blue", "green", "yellow", "orange", "red"]))
+                                            ["Black", "Blue", "Green", "Yellow", "Orange", "Red"]))
         window.getMouse()
 
 rainFall_Graph()

@@ -13,8 +13,8 @@ def drawCircle(window, center, radius, colour):
 
 def drawColouredEye(window, center, radius, colour):
     drawCircle(window, center, radius, "")
-    drawCircle(window, center, radius / 2, "brown")
-    drawCircle(window, center, radius / 3, "black")
+    drawCircle(window, center, radius / 2, "Brown")
+    drawCircle(window, center, radius / 3, "Black")
 
 def fastFoodOrderPrice():
     price = float(input("Price of pizza: "))
@@ -59,7 +59,7 @@ def peasInAPod():
     window = g.GraphWin("Peas in pod", peas * 100, 100)
 
     for i in range(peas):
-        pea = g.Circle(g.Point(i * 100 + 50, 50), 50).draw(window).setFill("green")
+        pea = g.Circle(g.Point(i * 100 + 50, 50), 50).draw(window).setFill("Green")
 
     window.getMouse()
 
@@ -89,8 +89,7 @@ def eyeColor():
 
     window.getMouse()
 
-# TODO patch window task: ID Number 9
-# Based on X and Y axis
+# Based on static X and Y values
 def drawPatchWindow():
     window = g.GraphWin("ID Num 9", 100, 100)
 
@@ -101,24 +100,34 @@ def drawPatchWindow():
         g.Line(g.Point(0, x), g.Point(100 - x, 100)).draw(window)
         g.Line(g.Point(100, 100 - x), g.Point(100 - x, 100)).draw(window)
 
-
     window.getMouse()
 
 # TODO patch window task, draw window by x and y
 # Based on parameters
 def drawPatch(window, pos_X, pos_Y):
     for x in range(pos_X, pos_X + 100, 10):
-        g.Line(g.Point(pos_X, pos_Y), g.Point(pos_X + 100,  (pos_Y + 100) - x)).draw(window)
-        g.Line(g.Point((pos_X + 100) - pos_X, pos_Y), g.Point(pos_X, (pos_Y + 100) - x)).draw(window)
-        g.Line(g.Point(pos_X, pos_Y + pos_X), g.Point((pos_X + 100) - pos_X, pos_Y + 100)).draw(window)
-        g.Line(g.Point(pos_X + 100,(pos_Y + 100) - x), g.Point((pos_X + 100) - x, pos_Y + 100)).draw(window)
+        #g.Line(g.Point(pos_X, pos_Y), g.Point(pos_X + 100,  (pos_Y + 100) - x)).draw(window)
+        #g.Line(g.Point((pos_X + 100) - pos_X, pos_Y), g.Point(pos_X, (pos_Y + 100) - x)).draw(window)
+        #g.Line(g.Point(pos_X, pos_Y + pos_X), g.Point((pos_X + 100) - pos_X, pos_Y + 100)).draw(window)
+        #g.Line(g.Point(pos_X + 100,(pos_Y + 100) - x), g.Point((pos_X + 100) - x, pos_Y + 100)).draw(window)
+
+        g.Line(g.Point(pos_X, pos_X), g.Point(pos_X + 100, (pos_Y + 100 - x))).draw(window).setOutline("Red")
+
+    window.getMouse()
+
+def drawPatchGrid():
+    window = g.GraphWin("Patch grid")
+
+    for row in range(0, 3):
+        for col in range(0, 2):
+            drawPatch(window, row * 100, col * 100)
 
     window.getMouse()
 
 def eyesAllAround():
     window = g.GraphWin("Eyes All Around")
 
-    colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+    colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"]
     colors_score = 0
 
     for i in range(0, 30):
@@ -134,8 +143,8 @@ def archeryGame():
     window = g.GraphWin("Archery Game", 200, 200)
 
     drawCircle(window, g.Point(100, 100), 50, "")
-    drawCircle(window, g.Point(100, 100), 30, "brown")
-    drawCircle(window, g.Point(100, 100), 15, "black")
+    drawCircle(window, g.Point(100, 100), 30, "Brown")
+    drawCircle(window, g.Point(100, 100), 15, "Black")
 
     score = 0
     score_Label = g.Text(g.Point(40, 40), "").draw(window)
@@ -145,7 +154,7 @@ def archeryGame():
         distance = distBetweenPoints(click, g.Point(100, 100))
 
         drawCircle(window, g.Point(click.getX() + rand.randint(-10, 10),
-                            g.Point(click.getY() + rand.randint(-10, 10)), 10), "pink")
+                            g.Point(click.getY() + rand.randint(-10, 10)), 10), "Pink")
 
         if distance <= 60 and distance >= 30:
             score += 2
