@@ -94,11 +94,11 @@ def drawPatchWindow():
     window = g.GraphWin("ID Num 9", 100, 100)
 
     for x in range(0, 100, 20):
-        g.Line(g.Point(x, 0), g.Point(100, 100 - x)).draw(window)
-        g.Line(g.Point(100 - x, 0), g.Point(0, 100 - x)).draw(window)
+        g.Line(g.Point(x, 0), g.Point(100, 100 - x)).draw(window).setOutline("Red")
+        g.Line(g.Point(100 - x, 0), g.Point(0, 100 - x)).draw(window).setOutline("Red")
 
-        g.Line(g.Point(0, x), g.Point(100 - x, 100)).draw(window)
-        g.Line(g.Point(100, 100 - x), g.Point(100 - x, 100)).draw(window)
+        g.Line(g.Point(0, x), g.Point(100 - x, 100)).draw(window).setOutline("Red")
+        g.Line(g.Point(100, 100 - x), g.Point(100 - x, 100)).draw(window).setOutline("Red")
 
     window.getMouse()
 
@@ -111,7 +111,10 @@ def drawPatch(window, pos_X, pos_Y):
         #g.Line(g.Point(pos_X, pos_Y + pos_X), g.Point((pos_X + 100) - pos_X, pos_Y + 100)).draw(window)
         #g.Line(g.Point(pos_X + 100,(pos_Y + 100) - x), g.Point((pos_X + 100) - x, pos_Y + 100)).draw(window)
 
-        g.Line(g.Point(pos_X, pos_X), g.Point(pos_X + 100, (pos_Y + 100 - x))).draw(window).setOutline("Red")
+        g.Line(g.Point(), g.Point()).draw(window).setOutline("Red")
+        g.Line(g.Point(), g.Point()).draw(window).setOutline("Red")
+        g.Line(g.Point(), g.Point()).draw(window).setOutline("Red")
+        g.Line(g.Point(), g.Point()).draw(window).setOutline("Red")
 
     window.getMouse()
 
