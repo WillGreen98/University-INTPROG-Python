@@ -188,4 +188,4 @@ def archeryGame():
 window = g.GraphWin("Patch Grapher", 300, 200)
 
 #drawPatchWindow()
-drawPatch(window, 300, 200)
+drawPatch(window, 300, 200, "Red")

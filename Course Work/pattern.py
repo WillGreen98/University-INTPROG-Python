@@ -19,32 +19,43 @@ def getInput():
 
     print(col_Three, col_One, col_Two)
 
-def draw_Patch_Penultimate(window):
-    color = ""
-    #
-    # point_One = g.Point(0, 0)
-    # point_Two = g.Point(50, 0)
-    # point_Three = g.Point(50, 50)
-    #
-    # for i in range(5):
-    #     if i % 2 == 0:
-    #         color = "Red"
-    #     else:
-    #         color = "White"
-    #
-    #     poly = g.Polygon(point_One, point_Two, point_Three)
-    #     poly.setFill(color)
-    #     poly.setOutline(color)
-    #     poly.draw(window)
-    #
-    #     point_One = g.Point(point_One.getX() + 10, point_One.getY())
-    #     point_Two = g.Point(point_Two.getX(), point_Two.getY())
-    #     point_three = g.Point(point_Three.getX(), point_Three.getY() - 10)
+def draw_Patch_Penultimate(window, pos_X, pos_Y, colour, reversed):
+    reversed = False
+
+    point_One = g.Point(0, 0)
+    point_Two = g.Point(50, 0)
+    point_Three = g.Point(50, 50)
+
+    colour = ""
+
+    poly = g.Polygon(point_One, point_Two, point_Three)
+    poly.setFill(colour)
+    poly.setOutline(colour)
+    poly.draw(window)
+
+    if reversed == False:
+        for i in range(5):
+            if i % 2 == 0:
+                colour = "Red"
+            else:
+                colour = "White"
+
+            point_One = g.Point(point_One.getX() + 10, point_One.getY())
+            point_Two = g.Point(point_Two.getX(), point_Two.getY())
+            point_three = g.Point(point_Three.getX(), point_Three.getY() - 10)
+    elif reversed == True:
+        for i in range(5):
+            if i % 2 == 0:
+                colour = "White"
+            else:
+                colour = "Red"
+            point_One = g.Point(point_One.getX() - 10, point_One.getY())
+            point_Two = g.Point(point_Two.getX(), point_Two.getY())
+            point_three = g.Point(point_Three.getX(), point_Three.getY() + 10)
 
 
 def drawLine(window, x1, y1, x2, y2, colour):
-    line = g.Line(g.Point(x1, y1), g.Point(x2, y2))
-    line.draw(window)
+    line = g.Line(g.Point(x1, y1), g.Point(x2, y2)).draw(window)
     line.setFill(colour)
 
 def draw_Patch_Final(window, pos_x, pos_y, colour):
@@ -54,26 +65,24 @@ def draw_Patch_Final(window, pos_x, pos_y, colour):
 
     while x < pos_x + 100 and y < pos_y + 100:
         print(pos_y, x, (2 * pos_y) + 100 + x, pos_x + 100)
-        #draw_line(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour)
-        #draw_line(window, y, pos_x, pos_y + 100, (2 * pos_x) + 100 - x, colour)
-
-        drawLine(window, x, pos_y, pos_x, y, colour)
-        drawLine(window, pos_x + 100, y, x, pos_x + 100, colour)
+        drawLine(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour)
+        drawLine(window, y, pos_x, pos_y + 100, (2 * pos_x) + 100 - x, colour)
 
         drawLine(window, y, pos_x, pos_y, x, colour)
         drawLine(window, pos_y + 100, x, y, pos_x + 100, colour)
-        x += 20; y += 20
-
-    window.getMouse()
+        x += 20
+        y += 20
 
 def main():
     window = g.GraphWin("Patch Work", 500, 500)
-    window.setCoords(0, 0, 100, 100)
 
-    getInput()
+    #getInput()
 
-    #draw_Patch_Final(window, 200, 50, "Red")
     draw_Patch_Penultimate(window)
+
+    #draw_Patch_Final(window, 100, 50, "Black")
+    #draw_Patch_Final(window, 200, 200, "Red")
+
 
     window.getMouse()
 
