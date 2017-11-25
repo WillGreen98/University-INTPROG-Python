@@ -3,12 +3,52 @@ __project__ = "Patterns Course Word"
 
 import graphics as g
 
-colors = ["Black", "Blue", "Green", "Yellow", "Orange", "Red"]
+colors = ["black", "blue", "green", "yellow", "orange", "red"]
+
+def getInputs_Mercer():
+    colours_array = []
+    size_col = 0  # setup for colours inputs
+    valid_colours = ["red", "green", "blue",
+                     "magenta", "cyan", "orange", "brown", "pink"]
+    while True:  # Loops until done
+        size = input("Please enter the size of the patchwork:")
+        # checks if input is a number
+        if size.isnumeric():
+            if int(size) % 2 == 1:
+                if size in ["5", "7", "9", "11"]:
+                    size = int(size)
+                    break
+                else:
+                    print("Your Input is not one of the valid options 5, 7, 9, 11")
+            else:
+                print("Your Input is an even number this is invalid")
+        else:
+            print("Your Input is not a  number")
+
+    while True:
+        colour = input("Please enter the {0} colour: ".format(size_col + 1))
+        if hasNumbers(colour):  # checks fir digit in input
+            print("Your colour contains number. Invalid Input")
+
+        else:
+            if colour in valid_colours:
+                if colour not in colours_array:  # checks if colour is already added
+                    colours_array.append(colour)
+                else:
+                    print("You cannot enter the same colour more than once")
+            else:
+                print("Your colour is not avaliable please try a different one. The valid colours are {0}".format(
+                    valid_colours))
+        # does size of the colours array for breaking purposes
+        size_col = len(colours_array)
+        if size_col >= 3:  # checks if enough colours have been entered
+            break
+
+    return size, colours_array
 
 def getInput():
     # 5x5 7x7 9x9 11x11
     dimensions = input("Enter grid (N N): ").split()
-
     di_X = int(dimensions[0])
     di_Y = int(dimensions[1])
 
@@ -17,9 +57,11 @@ def getInput():
     col_Two = color[1]
     col_Three = color[2]
 
-    print(col_Three, col_One, col_Two)
+    if col_One and col_Two and col_Three not in colors:
+        print("Colour not valid!")
+        getInput()
 
-def draw_Patch_Penultimate(window, pos_X, pos_Y, colour, reversed):
+def draw_Patch_Penultimate(window):
     reversed = False
 
     point_One = g.Point(0, 0)
@@ -61,10 +103,10 @@ def drawLine(window, x1, y1, x2, y2, colour):
 def draw_Patch_Final(window, pos_x, pos_y, colour):
     x = pos_x
     y = pos_y
-    print(x, y)
 
     while x < pos_x + 100 and y < pos_y + 100:
-        print(pos_y, x, (2 * pos_y) + 100 + x, pos_x + 100)
+        # TODO Flip Coordinates for reverted pattern
+        # If X and Y are different values, pattern diverges
         drawLine(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour)
         drawLine(window, y, pos_x, pos_y + 100, (2 * pos_x) + 100 - x, colour)
 
@@ -78,11 +120,11 @@ def main():
 
     #getInput()
 
-    draw_Patch_Penultimate(window)
+    #draw_Patch_Penultimate(window)
 
-    #draw_Patch_Final(window, 100, 50, "Black")
-    #draw_Patch_Final(window, 200, 200, "Red")
-
+    draw_Patch_Final(window, 50, 50, "Red")
+    draw_Patch_Final(window, 180, 180, "Black")
+    draw_Patch_Final(window, 300, 250, "Green")
 
     window.getMouse()
 
