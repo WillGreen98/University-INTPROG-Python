@@ -2,14 +2,16 @@ __author__ = "Will - UP853829"
 __project__ = "Patterns Course Word"
 
 import graphics as g
+import random as rand
+
+DEBUG = True
 
 colors = ["black", "blue", "green", "yellow", "orange", "red"]
 
 def getInputs_Mercer():
     colours_array = []
     size_col = 0  # setup for colours inputs
-    valid_colours = ["red", "green", "blue",
-                     "magenta", "cyan", "orange", "brown", "pink"]
+    valid_colours = ["red", "green", "blue", "magenta", "cyan", "orange", "brown", "pink"]
     while True:  # Loops until done
         size = input("Please enter the size of the patchwork:")
         # checks if input is a number
@@ -37,7 +39,7 @@ def getInputs_Mercer():
                 else:
                     print("You cannot enter the same colour more than once")
             else:
-                print("Your colour is not avaliable please try a different one. The valid colours are {0}".format(
+                print("Your colour is not available please try a different one. The valid colours are {0}".format(
                     valid_colours))
         # does size of the colours array for breaking purposes
         size_col = len(colours_array)
@@ -60,6 +62,8 @@ def getInput():
     if col_One and col_Two and col_Three not in colors:
         print("Colour not valid!")
         getInput()
+
+    return dimensions, color
 
 def draw_Patch_Penultimate(window):
     reversed = False
@@ -107,13 +111,19 @@ def draw_Patch_Final(window, pos_x, pos_y, colour):
     while x < pos_x + 100 and y < pos_y + 100:
         # TODO Flip Coordinates for reverted pattern
         # If X and Y are different values, pattern diverges
-        drawLine(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour)
+        #Top Left to Bottom Right
+        drawLine(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour) # Problem line
         drawLine(window, y, pos_x, pos_y + 100, (2 * pos_x) + 100 - x, colour)
 
+        #Top Right to Bottom Left
         drawLine(window, y, pos_x, pos_y, x, colour)
         drawLine(window, pos_y + 100, x, y, pos_x + 100, colour)
+
         x += 20
         y += 20
+
+        if DEBUG:
+            print("x1: ", pos_y, " y1: ", x, " x2: ", ((2 * pos_y) + 100 - x), " y2: ", (pos_x + 100))
 
 def main():
     window = g.GraphWin("Patch Work", 500, 500)
@@ -125,6 +135,11 @@ def main():
     draw_Patch_Final(window, 50, 50, "Red")
     draw_Patch_Final(window, 180, 180, "Black")
     draw_Patch_Final(window, 300, 250, "Green")
+
+    # for rows in range(0, 600, 100):
+    #     for cols in range(0, 600, 100):
+    #         draw_Patch_Final(window, rows + 100, cols + 100, rand.choice(colors))
+
 
     window.getMouse()
 
