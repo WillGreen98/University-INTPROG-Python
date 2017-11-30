@@ -2,70 +2,56 @@ __author__ = "Will - UP853829"
 __project__ = "Patterns Course Word"
 
 import graphics as g
-import random as rand
+import numbers
 
 DEBUG = True
 
-colors = ["black", "blue", "green", "yellow", "orange", "red"]
 
-def getInputs_Mercer():
-    colours_array = []
-    size_col = 0  # setup for colours inputs
-    valid_colours = ["red", "green", "blue", "magenta", "cyan", "orange", "brown", "pink"]
-    while True:  # Loops until done
-        size = input("Please enter the size of the patchwork:")
-        # checks if input is a number
-        if size.isnumeric():
-            if int(size) % 2 == 1:
-                if size in ["5", "7", "9", "11"]:
-                    size = int(size)
-                    break
-                else:
-                    print("Your Input is not one of the valid options 5, 7, 9, 11")
-            else:
-                print("Your Input is an even number this is invalid")
-        else:
-            print("Your Input is not a  number")
+# Could I use a dictionary for both valid colours and entered colours
+# Checking both against each other - this could reduce line count
 
-    while True:
-        colour = input("Please enter the {0} colour: ".format(size_col + 1))
-        if hasNumbers(colour):  # checks fir digit in input
-            print("Your colour contains number. Invalid Input")
-
-        else:
-            if colour in valid_colours:
-                if colour not in colours_array:  # checks if colour is already added
-                    colours_array.append(colour)
-                else:
-                    print("You cannot enter the same colour more than once")
-            else:
-                print("Your colour is not available please try a different one. The valid colours are {0}".format(
-                    valid_colours))
-        # does size of the colours array for breaking purposes
-        size_col = len(colours_array)
-        if size_col >= 3:  # checks if enough colours have been entered
-            break
-
-    return size, colours_array
+valid_colours = ["red", "green", "blue", "magenta", "cyan", "orange", "brown", "pink"]
 
 def getInput():
-    # 5x5 7x7 9x9 11x11
-    dimensions = input("Enter grid (N N): ").split()
-    di_X = int(dimensions[0])
-    di_Y = int(dimensions[1])
+    size_Index = 0
+    colour_Choices = []
 
-    color = input("Enter colors (color 1 colour 1 color 3): ").split()
-    col_One = color[0]
-    col_Two = color[1]
-    col_Three = color[2]
+    while True:
+        # As string then convert to int
+        val_Dimensions = [5, 7, 9, 11]
 
-    if col_One and col_Two and col_Three not in colors:
-        print("Colour not valid!")
-        getInput()
+        dimensions = input("Enter size in form of N N: ").split()
+        di_X = dimensions[0]
+        di_Y = dimensions[1]
 
-    return dimensions, color
+        if DEBUG:
+            print(di_X, di_Y, di_X + di_Y)
 
-def draw_Patch_Penultimate(window):
+        if not dimensions.__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
+            print("Entry contains letter")
+            if int(di_X) % 2 == 1:
+                if int(di_Y) % 2 == 1:
+                    for val_D in dimensions:
+                        if val_D not in val_Dimensions:
+                            print("X or Y value not a valid digit")
+                        else:
+                            break
+                else:
+                    print("Y value not even")
+                    getInput()
+            else:
+                print("X value not even")
+                getInput()
+            break
+
+    while True:
+        colour = input("Enter colours (colour colour colour): ").split()
+
+        colour_Choices.append(colour)
+
+        break
+
+def draw_Patch_Penultimate(window, reversed):
     reversed = False
 
     point_One = g.Point(0, 0)
@@ -126,22 +112,22 @@ def draw_Patch_Final(window, pos_x, pos_y, colour):
             print("x1: ", pos_y, " y1: ", x, " x2: ", ((2 * pos_y) + 100 - x), " y2: ", (pos_x + 100))
 
 def main():
-    window = g.GraphWin("Patch Work", 500, 500)
+    # window = g.GraphWin("Patch Work", 500, 500)
 
-    #getInput()
+    getInput()
 
-    #draw_Patch_Penultimate(window)
+    # draw_Patch_Penultimate(window, false)
 
-    draw_Patch_Final(window, 50, 50, "Red")
-    draw_Patch_Final(window, 180, 180, "Black")
-    draw_Patch_Final(window, 300, 250, "Green")
+    # draw_Patch_Final(window, 50, 50, "Red")
+    # draw_Patch_Final(window, 180, 180, "Black")
+    # draw_Patch_Final(window, 300, 250, "Green")
 
     # for rows in range(0, 600, 100):
     #     for cols in range(0, 600, 100):
     #         draw_Patch_Final(window, rows + 100, cols + 100, rand.choice(colors))
 
 
-    window.getMouse()
+    #window.getMouse()
 
 if __name__ == '__main__':
     main()
