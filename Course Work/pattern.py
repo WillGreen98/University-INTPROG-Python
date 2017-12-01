@@ -6,27 +6,27 @@ import numbers
 
 DEBUG = True
 
-valid_colours = ["red", "green", "blue", "magenta", "cyan", "orange", "brown", "pink"]
+valid_colours = ["red", "orange", "green", "blue", "magenta", "cyan", "brown", "pink"]  # Order of Freq
 
 def getInput():
     val_Dimensions = [5, 7, 9, 11]
     colour_Choices = []
 
     while True:
-        dimensions = input("Enter dimension: ")
+        dimension = input("Enter dimension: ")
 
         # Or boring .isnumeric()
-        if dimensions.__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
-            dimensions = int(dimensions)
-            if dimensions % 2 == 1:
-                if dimensions in val_Dimensions:
+        if dimension.__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
+            dimension = int(dimension)
+            if dimension % 2 == 1:
+                if dimension in val_Dimensions:
                     break
                 else:
-                    print("X or Y value not a valid digit")
+                    print("Value not a valid digit")
             else:
                 print("Value not even, must be {0}".format(val_Dimensions))
         else:
-            print("Only numbers!")
+            print("Only Numbers!")
 
     while True:
         colour = input("Enter colours: ")
@@ -40,9 +40,9 @@ def getInput():
         if len(colour_Choices) >= 3:
             break
 
-    return dimensions, colour_Choices
+    return dimension, colour_Choices
 
-def draw_Patch_Penultimate(window, reversed):
+def draw_Patch_Penultimate(window, pos_x, pos_Y, colour, reversed):
     colour = ""
 
     point_One = g.Point(0, 0)
@@ -115,7 +115,7 @@ def main():
 
         for rows in range(0, 600, 100):
             for cols in range(0, 600, 100):
-                # draw_Patch_Penultimate(window, False)
+                # draw_Patch_Penultimate(window, rows + 100, cols + 100, col[x], False)
                 draw_Patch_Final(window, rows + 100, cols + 100, col[x])
                 x += 1
                 if x == 3:
