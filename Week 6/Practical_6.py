@@ -116,12 +116,10 @@ def drawPatch(window, pos_x, pos_y, colour):
 
     while x < pos_x + 100 and y < pos_y + 100:
         print(pos_y, x, (2 * pos_y) + 100 + x, pos_x + 100)
-        #draw_line(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour)
-        #draw_line(window, y, pos_x, pos_y + 100, (2 * pos_x) + 100 - x, colour)
+        drawLine(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour) # Problem line
+        drawLine(window, y, pos_x, pos_y + 100, (2 * pos_x) + 100 - x, colour)
 
-        drawLine(window, x, pos_y, pos_x, y, colour)
-        drawLine(window, pos_x + 100, y, x, pos_x + 100, colour)
-
+        #Top Right to Bottom Left
         drawLine(window, y, pos_x, pos_y, x, colour)
         drawLine(window, pos_y + 100, x, y, pos_x + 100, colour)
         x += 20

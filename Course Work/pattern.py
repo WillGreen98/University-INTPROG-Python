@@ -2,25 +2,21 @@ __author__ = "Will - UP853829"
 __project__ = "Patterns Course Word"
 
 import graphics as g
-import random as rand
 import numbers
 
 DEBUG = True
 
-# Could I use a dictionary for both valid colours and entered colours
-# Checking both against each other - this could reduce line count
-
 valid_colours = ["red", "green", "blue", "magenta", "cyan", "orange", "brown", "pink"]
 
 def getInput():
-    size_Index = 0
     val_Dimensions = [5, 7, 9, 11]
-
     colour_Choices = []
 
     while True:
         dimensions = input("Enter dimension: ")
-        if dimensions.isnumeric(): #__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
+
+        # Or boring .isnumeric()
+        if dimensions.__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
             dimensions = int(dimensions)
             if dimensions % 2 == 1:
                 if dimensions in val_Dimensions:
@@ -28,14 +24,14 @@ def getInput():
                 else:
                     print("X or Y value not a valid digit")
             else:
-                print("Y value not even")
+                print("Value not even, must be {0}".format(val_Dimensions))
         else:
             print("Only numbers!")
 
     while True:
         colour = input("Enter colours: ")
-        if colour  in valid_colours:
-            if colour  not in colour_Choices:
+        if colour in valid_colours:
+            if colour not in colour_Choices:
                 colour_Choices.append(colour)
             else:
                 print("You cannot use the same colour twice")
@@ -44,13 +40,14 @@ def getInput():
         if len(colour_Choices) >= 3:
             break
 
+    return dimensions, colour_Choices
+
 def draw_Patch_Penultimate(window, reversed):
+    colour = ""
 
     point_One = g.Point(0, 0)
     point_Two = g.Point(50, 0)
     point_Three = g.Point(50, 50)
-
-    colour = ""
 
     poly = g.Polygon(point_One, point_Two, point_Three)
     poly.setFill(colour)
@@ -79,8 +76,7 @@ def draw_Patch_Penultimate(window, reversed):
 
 
 def drawLine(window, x1, y1, x2, y2, colour):
-    line = g.Line(g.Point(x1, y1), g.Point(x2, y2)).draw(window)
-    line.setFill(colour)
+    line = g.Line(g.Point(x1, y1), g.Point(x2, y2)).draw(window).setFill(colour)
 
 def draw_Patch_Final(window, pos_x, pos_y, colour):
     x = pos_x
@@ -104,21 +100,26 @@ def draw_Patch_Final(window, pos_x, pos_y, colour):
             print("x1: ", pos_y, " y1: ", x, " x2: ", ((2 * pos_y) + 100 - x), " y2: ", (pos_x + 100))
 
 def main():
-    window = g.GraphWin("Patch Work", 500, 500)
-
-    getInput()
-
-    draw_Patch_Penultimate(window, False)
+    x = 0
 
     if DEBUG:
-        draw_Patch_Final(window, 50, 50, "Red")
-        draw_Patch_Final(window, 180, 180, "Black")
-        draw_Patch_Final(window, 300, 250, "Green")
+        window = g.GraphWin("Patch Work", 600, 600)
+        # draw_Patch_Penultimate(window, False)
+
+        draw_Patch_Final(window, 50, 50, "red")
+        draw_Patch_Final(window, 180, 180, "black")
+        draw_Patch_Final(window, 300, 250, "blue")
     else:
+        dim, col = getInput()
+        window = g.GraphWin("Patch Work", dim * 100, dim * 100)
+
         for rows in range(0, 600, 100):
             for cols in range(0, 600, 100):
-                draw_Patch_Final(window, rows + 100, cols + 100, rand.choice(valid_colours))
-
+                # draw_Patch_Penultimate(window, False)
+                draw_Patch_Final(window, rows + 100, cols + 100, col[x])
+                x += 1
+                if x == 3:
+                    x = 0
 
     window.getMouse()
 
