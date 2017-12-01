@@ -4,7 +4,7 @@ __project__ = "Patterns Course Word"
 import graphics as g
 import numbers
 
-DEBUG = True
+DEBUG = False
 
 valid_colours = ["red", "orange", "green", "blue", "magenta", "cyan", "brown", "pink"]  # Order of Freq
 
