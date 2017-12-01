@@ -5,7 +5,7 @@ import graphics as g
 import random as rand
 import numbers
 
-DEBUG = True
+DEBUG = False
 
 # Could I use a dictionary for both valid colours and entered colours
 # Checking both against each other - this could reduce line count
