@@ -16,7 +16,7 @@ def getInput():
         dimension = input("Enter dimension: ")
 
         # Or boring .isnumeric()
-        if dimension.__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
+        if dimension.isnumeric():   #__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
             dimension = int(dimension)
             if dimension % 2 == 1:
                 if dimension in val_Dimensions:
@@ -29,7 +29,8 @@ def getInput():
             print("Only Numbers!")
 
     while True:
-        colour = input("Enter colours: ")
+        colour = input("Enter colour: ")
+
         if colour in valid_colours:
             if colour not in colour_Choices:
                 colour_Choices.append(colour)
@@ -113,9 +114,9 @@ def main():
         dim, col = getInput()
         window = g.GraphWin("Patch Work", dim * 100, dim * 100)
 
-        for rows in range(0, 600, 100):
-            for cols in range(0, 600, 100):
-                # draw_Patch_Penultimate(window, rows + 100, cols + 100, col[x], False)
+        for rows in range(0, 500, 100):
+            for cols in range(0, 500, 100):
+                #draw_Patch_Penultimate(window, rows + 100, cols + 100, col[x], False)
                 draw_Patch_Final(window, rows + 100, cols + 100, col[x])
                 x += 1
                 if x == 3:
