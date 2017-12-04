@@ -2,7 +2,6 @@ __author__ = "Will - UP853829"
 __project__ = "Patterns Course Word"
 
 import graphics as g
-import numbers
 
 DEBUG = False
 
@@ -15,8 +14,7 @@ def getInput():
     while True:
         dimension = input("Enter dimension: ")
 
-        # Or boring .isnumeric()
-        if dimension.isnumeric():   #__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
+        if dimension.isnumeric():
             dimension = int(dimension)
             if dimension % 2 == 1:
                 if dimension in val_Dimensions:
@@ -84,28 +82,31 @@ def draw_Patch_Final(window, pos_x, pos_y, colour):
     y = pos_y
 
     while x < pos_x + 100 and y < pos_y + 100:
-        # TODO Flip Coordinates for reverted pattern
         # If X and Y are different values, pattern diverges
-        #Top Left to Bottom Right
+        # Top Left to Bottom Right
         drawLine(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour) # Problem line
         drawLine(window, y, pos_x, pos_y + 100, (2 * pos_x) + 100 - x, colour)
 
-        #Top Right to Bottom Left
+        # Top Right to Bottom Left
         drawLine(window, y, pos_x, pos_y, x, colour)
         drawLine(window, pos_y + 100, x, y, pos_x + 100, colour)
 
         x += 20
         y += 20
 
-        if DEBUG:
-            print("x1: ", pos_y, " y1: ", x, " x2: ", ((2 * pos_y) + 100 - x), " y2: ", (pos_x + 100))
+        # Imported code minus colour
+        # for i in range(0, 1, 2):
+        #     drawLine(window, g.Point(x + i, y), g.Point(x + 10, y + 10 - i), colour)
+        #     drawLine(window, g.Point(x, y + i), g.Point(x + 10 - i, y + 10), colour)
+        #     drawLine(window, g.Point(x + i, y + 10), g.Point(x + 10, y + i), colour)
+        #     drawLine(window, g.Point(x, y + 10 - i), g.Point(x + 10 - i, y), colour)
 
 def main():
     x = 0
 
     if DEBUG:
         window = g.GraphWin("Patch Work", 600, 600)
-        # draw_Patch_Penultimate(window, False)
+        draw_Patch_Penultimate(window, False)
 
         draw_Patch_Final(window, 50, 50, "red")
         draw_Patch_Final(window, 180, 180, "black")
@@ -116,8 +117,9 @@ def main():
 
         for rows in range(0, 500, 100):
             for cols in range(0, 500, 100):
-                #draw_Patch_Penultimate(window, rows + 100, cols + 100, col[x], False)
+                # draw_Patch_Penultimate(window, rows + 100, cols + 100, col[x], False)
                 draw_Patch_Final(window, rows + 100, cols + 100, col[x])
+
                 x += 1
                 if x == 3:
                     x = 0
