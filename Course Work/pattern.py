@@ -106,7 +106,7 @@ def main():
 
     if DEBUG:
         window = g.GraphWin("Patch Work", 600, 600)
-        draw_Patch_Penultimate(window, False)
+        draw_Patch_Penultimate(window, 200, 200, "red", False)
 
         draw_Patch_Final(window, 50, 50, "red")
         draw_Patch_Final(window, 180, 180, "black")
