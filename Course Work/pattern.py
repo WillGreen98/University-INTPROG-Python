@@ -14,7 +14,7 @@ def getInput():
     while True:
         dimension = input("Enter dimension: ")
 
-        if dimension.isnumeric():
+        if dimension.isnumeric(): #__contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
             dimension = int(dimension)
             if dimension % 2 == 1:
                 if dimension in val_Dimensions:
@@ -41,7 +41,7 @@ def getInput():
 
     return dimension, colour_Choices
 
-def draw_Patch_Penultimate(window, pos_x, pos_Y, colour, reversed):
+def draw_Patch_Penultimate(window, pos_X, pos_Y, colour, reversed):
     colour = ""
 
     point_One = g.Point(0, 0)
@@ -60,9 +60,9 @@ def draw_Patch_Penultimate(window, pos_x, pos_Y, colour, reversed):
             else:
                 colour = "White"
 
-            point_One = g.Point(point_One.getX() + 10, point_One.getY())
-            point_Two = g.Point(point_Two.getX(), point_Two.getY())
-            point_three = g.Point(point_Three.getX(), point_Three.getY() - 10)
+            point_One = g.Point(pos_X + 10, pos_Y)
+            point_Two = g.Point(pos_X, pos_Y)
+            point_three = g.Point(pos_X, pos_Y - 10)
     elif reversed == True:
         for i in range(5):
             if i % 2 == 0:
@@ -74,39 +74,24 @@ def draw_Patch_Penultimate(window, pos_x, pos_Y, colour, reversed):
             point_three = g.Point(point_Three.getX(), point_Three.getY() + 10)
 
 
-def drawLine(window, x1, y1, x2, y2, colour):
-    line = g.Line(g.Point(x1, y1), g.Point(x2, y2)).draw(window).setFill(colour)
+def drawLine(window, pos_X, pos_Y, colour):
+    line = g.Line(pos_X, pos_Y).draw(window).setFill(colour)
 
-def draw_Patch_Final(window, pos_x, pos_y, colour):
-    x = pos_x
-    y = pos_y
-
-    while x < pos_x + 100 and y < pos_y + 100:
-        # If X and Y are different values, pattern diverges
-        # Top Left to Bottom Right
-        drawLine(window, pos_y, x, (2 * pos_y) + 100 - x, pos_x + 100, colour) # Problem line
-        drawLine(window, y, pos_x, pos_y + 100, (2 * pos_x) + 100 - x, colour)
-
-        # Top Right to Bottom Left
-        drawLine(window, y, pos_x, pos_y, x, colour)
-        drawLine(window, pos_y + 100, x, y, pos_x + 100, colour)
-
-        x += 20
-        y += 20
-
-        # Imported code minus colour
-        # for i in range(0, 1, 2):
-        #     drawLine(window, g.Point(x + i, y), g.Point(x + 10, y + 10 - i), colour)
-        #     drawLine(window, g.Point(x, y + i), g.Point(x + 10 - i, y + 10), colour)
-        #     drawLine(window, g.Point(x + i, y + 10), g.Point(x + 10, y + i), colour)
-        #     drawLine(window, g.Point(x, y + 10 - i), g.Point(x + 10 - i, y), colour)
+def draw_Patch_Final(window, x, y, colour):
+    for i in range(0, 100, 20):
+        drawLine(window, g.Point(x + i, y), g.Point(x + 100, y + 100 - i), colour)
+        drawLine(window, g.Point(x, y + i), g.Point(x + 100 - i, y + 100), colour)
+        drawLine(window, g.Point(x + i, y + 100), g.Point(x + 100, y + i), colour)
+        drawLine(window, g.Point(x, y + 100 - i), g.Point(x + 100 - i, y), colour)
 
 def main():
     x = 0
+    cols_Counter = 0
+    rows_Counter = 0
 
     if DEBUG:
-        window = g.GraphWin("Patch Work", 600, 600)
-        draw_Patch_Penultimate(window, 200, 200, "red", False)
+        window = g.GraphWin("Patch Work")
+        #draw_Patch_Penultimate(window, 200, 200, "red", False)
 
         draw_Patch_Final(window, 50, 50, "red")
         draw_Patch_Final(window, 180, 180, "black")
@@ -115,10 +100,10 @@ def main():
         dim, col = getInput()
         window = g.GraphWin("Patch Work", dim * 100, dim * 100)
 
-        for rows in range(0, 500, 100):
-            for cols in range(0, 500, 100):
+        for cols in range(0, window.getHeight(), 100):
+            for rows in range(0, window.getWidth(), 100):
                 # draw_Patch_Penultimate(window, rows + 100, cols + 100, col[x], False)
-                draw_Patch_Final(window, rows + 100, cols + 100, col[x])
+                draw_Patch_Final(window, rows, cols, col[x])
 
                 x += 1
                 if x == 3:
