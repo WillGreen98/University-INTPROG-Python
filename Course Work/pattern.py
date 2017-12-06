@@ -68,12 +68,12 @@ def draw_Patch_Penultimate(window, pos_X, pos_Y, colour, reversed):
     # poly = g.Polygon(point_One, point_Two, point_Three).draw(window).setFill(colour)
 
     for i in range(0, 50, 10):
-        p1 = g.Point(pos_X + i, pos_Y + 150)
-        p2 = g.Point(pos_X + 150 + i, pos_Y)
-        p3 = g.Point(pos_X + 50, pos_Y + i)
-        p4 = g.Point(pos_X, pos_Y + 50 + i)
+        point_One = g.Point(pos_X + i, pos_Y + 10)
+        point_Two = g.Point(pos_X + 10 + i, pos_Y)
+        point_Three = g.Point(pos_X + 50, pos_Y + i)
+        point_Four = g.Point(pos_X, pos_Y + 50 + i)
 
-        polygon = g.Polygon(p1, p2, p3, p4).draw(window).setFill(colour)
+        polygon = g.Polygon(point_One, point_Two, point_Three, point_Four).draw(window).setFill(colour)
 
 
 def drawLine(window, pos_X, pos_Y, colour):
