@@ -4,7 +4,7 @@ __project__ = "Patterns Course Word"
 import graphics as g
 import numbers
 
-DEBUG = True
+DEBUG = False
 
 valid_colours = ["red", "orange", "green", "blue", "magenta", "cyan", "brown", "pink"]  # Order of Freq
 
@@ -15,7 +15,7 @@ def getInput():
     while True:
         dimension = input("Enter dimension: ")
 
-        if dimension.isnumeric():    # .__contains__(lambda i: isinstance(i, numbers.Number)):
+        if dimension.isnumeric(): # __contains__(str(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions))):
             dimension = int(dimension)
             if dimension % 2 == 1:
                 if dimension in val_Dimensions:
@@ -47,28 +47,38 @@ def draw_Patch_Penultimate(window, pos_X, pos_Y, colour, reversed):
     point_Two = g.Point(50, 0)
     point_Three = g.Point(50, 50)
 
-    for i in range(5):
-        if i % 2 == 0:
-            colour = colour
-        else:
-            colour = "White"
+    if reversed == False:
+        for i in range(5):
+            if i % 2 == 0:
+                colour = colour
+            else:
+                colour = "White"
 
-        point_One = g.Point(pos_X + 10, pos_Y)
-        point_Two = g.Point(pos_X, pos_Y)
-        point_three = g.Point(pos_X, pos_Y - 10)
+            point_One = g.Point(pos_X + 10, pos_Y)
+            point_Two = g.Point(pos_X, pos_Y)
+            point_three = g.Point(pos_X, pos_Y - 10)
+    elif reversed == True:
+        for i in range(5):
+            if i % 2 == 1:
+                colour = "white"
+            else:
+                colour = colour
+
+            point_One = g.Point(pos_X - 10, pos_Y)
+            point_Two = g.Point(pos_X, pos_Y)
+            point_three = g.Point(pos_X, pos_Y + 10)
 
     poly = g.Polygon(point_One, point_Two, point_Three).draw(window).setFill(colour)
-
 
 def drawLine(window, pos_X, pos_Y, colour):
     line = g.Line(pos_X, pos_Y).draw(window).setFill(colour)
 
-def draw_Patch_Final(window, x, y, colour):
+def draw_Patch_Final(window, pos_X, pos_Y, colour):
     for i in range(0, 100, 20):
-        drawLine(window, g.Point(x + i, y), g.Point(x + 100, y + 100 - i), colour)
-        drawLine(window, g.Point(x, y + i), g.Point(x + 100 - i, y + 100), colour)
-        drawLine(window, g.Point(x + i, y + 100), g.Point(x + 100, y + i), colour)
-        drawLine(window, g.Point(x, y + 100 - i), g.Point(x + 100 - i, y), colour)
+        drawLine(window, g.Point(pos_X + i, pos_Y), g.Point(pos_X + 100, pos_Y + 100 - i), colour)
+        drawLine(window, g.Point(pos_X, pos_Y + i), g.Point(pos_X + 100 - i, pos_Y + 100), colour)
+        drawLine(window, g.Point(pos_X + i, pos_Y + 100), g.Point(pos_X + 100, pos_Y + i), colour)
+        drawLine(window, g.Point(pos_X, pos_Y + 100 - i), g.Point(pos_X + 100 - i, pos_Y), colour)
 
 def main():
     x = 0
@@ -88,7 +98,7 @@ def main():
 
         for cols in range(0, window.getHeight(), 100):
             for rows in range(0, window.getWidth(), 100):
-                draw_Patch_Penultimate(window, rows + 100, cols + 100, col[x], False)
+                #draw_Patch_Penultimate(window, rows, cols, col[x], True)
                 draw_Patch_Final(window, rows, cols, col[x])
 
                 x += 1
