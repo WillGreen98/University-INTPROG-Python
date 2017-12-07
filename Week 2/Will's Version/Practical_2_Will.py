@@ -2,7 +2,6 @@ __auther__ = "Will"
 __project__ = "Prac 2"
 
 import math
-import numpy as np
 import matplotlib.pyplot as mpl
 
 def getRadius():
