@@ -33,13 +33,14 @@ def getInput():
             else:
                 print("You cannot use the same colour twice")
         else:
-            print("Invalid input your inputs must be one of {0}".format(valid_colours))
+            print("Invalid input, your inputs must be one of {0}".format(valid_colours))
         if len(colour_Choices) >= 3:
             break
 
     return dimension, colour_Choices
 
 def draw_Polygon(window, point_One, point_Two, point_Three, colour):
+    # Faster render time than: poly = g.Polygon(point_One, point_Two, point_Three).draw(window).setFill(colour)
     poly = g.Polygon(point_One, point_Two, point_Three)
     poly.setFill(colour)
     poly.setOutline(colour)
