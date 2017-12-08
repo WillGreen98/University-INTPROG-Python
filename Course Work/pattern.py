@@ -2,6 +2,7 @@ __author__ = "Will - UP853829"
 __project__ = "Patterns Course Word"
 
 import graphics as g
+#import numbers
 
 val_Dimensions = [5, 7, 9, 11]
 
@@ -12,7 +13,7 @@ def getInput():
     while True:
         dimension = input("Enter dimension: ")
 
-        if dimension.isnumeric():
+        if dimension.isnumeric():    # __contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
             dimension = int(dimension)
             if dimension % 2 == 1:
                 if dimension in val_Dimensions:
@@ -27,13 +28,16 @@ def getInput():
     while True:
         colour = input("Enter colour: ")
 
-        if colour in valid_colours:
-            if colour not in colour_Choices:
-                colour_Choices.append(colour)
+        if not colour.isnumeric():
+            if colour in valid_colours:
+                if colour not in colour_Choices:
+                    colour_Choices.append(colour)
+                else:
+                    print("You cannot use the same colour twice")
             else:
-                print("You cannot use the same colour twice")
+                print("Invalid input, your inputs must be one of {0}".format(valid_colours))
         else:
-            print("Invalid input, your inputs must be one of {0}".format(valid_colours))
+            print("Input should not contain digits")
         if len(colour_Choices) >= 3:
             break
 
@@ -112,7 +116,9 @@ def draw_Patch_Penultimate(window, pos_X, pos_Y, current_Colour):
                 pos_Increment += 10
 
 def drawLine(window, pos_X, pos_Y, colour):
-    line = g.Line(pos_X, pos_Y).draw(window).setFill(colour)
+    line = g.Line(pos_X, pos_Y)
+    line.setFill(colour)
+    line.draw(window)
 
 def draw_Patch_Final(window, pos_X, pos_Y, colour):
     for i in range(0, 100, 20):
@@ -125,7 +131,7 @@ def main():
     x = 0
 
     dim, col_Array = getInput()
-    window = g.GraphWin("Patch Work", dim * 100, dim * 100)
+    window = g.GraphWin("Patch INTPROG Coursework", dim * 100, dim * 100)
 
     for columns in range(0, window.getHeight(), 100):
         for rows in range(0, window.getWidth(), 100):
