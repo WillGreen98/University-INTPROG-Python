@@ -24,7 +24,7 @@ def getInput():
         else:
             print("Only Numbers!")
 
-    while True:
+    while len(colour_Choices) >= 3:
         colour = input("Enter colour: ")
 
         if not colour.isnumeric():
@@ -37,8 +37,6 @@ def getInput():
                 print("Invalid input, your inputs must be one of {0}".format(valid_colours))
         else:
             print("Input should not contain digits")
-        if len(colour_Choices) >= 3:
-            break
 
     return dimension, colour_Choices
 
