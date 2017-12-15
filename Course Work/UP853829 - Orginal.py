@@ -1,5 +1,5 @@
 __author__ = "Will - UP853829"
-__project__ = "Patterns Course Word"
+__project__ = "Patterns Course Work"
 
 import graphics as g
 
