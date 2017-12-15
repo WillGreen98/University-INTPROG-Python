@@ -71,7 +71,6 @@ def draw_Patch_Penultimate(window, pos_X, pos_Y, current_Colour):
     colour = current_Colour
     pos_Increment = 0
 
-    # Test code for optimisation
     poly_Arg_List = [
         (g.Point(top_Left.getX(), top_Left.getY() + pos_Increment), g.Point(mid_Mid.getX() - pos_Increment, mid_Mid.getY()), mid_Left),
         (g.Point(top_Left.getX() + pos_Increment, top_Left.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() - pos_Increment), top_Mid),
