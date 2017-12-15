@@ -24,7 +24,7 @@ def getInput():
         else:
             print("Only Numbers!")
 
-    while len(colour_Choices) >= 3:
+    while len(colour_Choices) <= 3:
         colour = input("Enter colour: ")
 
         if not colour.isnumeric():
