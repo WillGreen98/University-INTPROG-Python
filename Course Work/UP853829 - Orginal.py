@@ -12,7 +12,7 @@ def getInput():
     while True:
         dimension = input("Enter dimension: ")
 
-        if dimension.isnumeric():    # __contains__(filter(lambda i: isinstance(i, numbers.Number), val_Dimensions)):
+        if dimension.isnumeric():
             dimension = int(dimension)
             if dimension % 2 == 1:
                 if dimension in val_Dimensions:
@@ -43,7 +43,6 @@ def getInput():
     return dimension, colour_Choices
 
 def draw_Polygon(window, point_One, point_Two, point_Three, colour):
-    # Faster render time than: poly = g.Polygon(point_One, point_Two, point_Three).draw(window).setFill(colour)
     poly = g.Polygon(point_One, point_Two, point_Three)
     poly.setFill(colour)
     poly.setOutline(colour)

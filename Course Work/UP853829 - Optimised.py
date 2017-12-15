@@ -71,83 +71,30 @@ def draw_Patch_Penultimate(window, pos_X, pos_Y, current_Colour):
     colour = current_Colour
     pos_Increment = 0
 
-    for quadrant in range(8):
+    # Test code for optimisation
+    poly_Arg_List = [
+        (g.Point(top_Left.getX(), top_Left.getY() + pos_Increment), g.Point(mid_Mid.getX() - pos_Increment, mid_Mid.getY()), mid_Left),
+        (g.Point(top_Left.getX() + pos_Increment, top_Left.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() - pos_Increment), top_Mid),
+        (top_Mid, g.Point(top_Right.getX() - pos_Increment, top_Right.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() - pos_Increment)),
+        (g.Point(top_Right.getX(), top_Right.getY() + pos_Increment), g.Point(mid_Mid.getX() + pos_Increment, mid_Mid.getY()), mid_Right),
+        (g.Point(bottom_Left.getX(), bottom_Left.getY() - pos_Increment), g.Point(mid_Mid.getX() - pos_Increment, mid_Mid.getY()), mid_Left),
+        (g.Point(bottom_Left.getX() + pos_Increment, bottom_Left.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() + pos_Increment), bottom_Mid),
+        (mid_Right, g.Point(mid_Mid.getX() + pos_Increment, mid_Mid.getY()), g.Point(bottom_Right.getX(), bottom_Right.getY() - pos_Increment)),
+        (g.Point(bottom_Right.getX() - pos_Increment, bottom_Right.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() + pos_Increment), bottom_Mid)
+    ]
+
+    for quadrant in range(0, 1, 1):
+        quadrant += 1
         pos_Increment = 0
-        if quadrant == 0:
-            for i in range(5):
-                colour = colour_Picker(current_Colour, colour)
-                draw_Polygon(window, g.Point(top_Left.getX(), top_Left.getY() + pos_Increment), g.Point(mid_Mid.getX() - pos_Increment, mid_Mid.getY()), mid_Left, colour)
-                pos_Increment += 10
-        elif quadrant == 1:
-            for i in range(5):
-                colour = colour_Picker(current_Colour, colour)
-                draw_Polygon(window, g.Point(top_Left.getX() + pos_Increment, top_Left.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() - pos_Increment), top_Mid, colour)
-                pos_Increment += 10
-        elif quadrant == 2:
-            for i in range(5):
-                colour = colour_Picker(current_Colour, colour)
-                draw_Polygon(window, top_Mid, g.Point(top_Right.getX() - pos_Increment, top_Right.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() - pos_Increment), colour)
-                pos_Increment += 10
-        elif quadrant == 3:
-            for i in range(5):
-                colour = colour_Picker(current_Colour, colour)
-                draw_Polygon(window, g.Point(top_Right.getX(), top_Right.getY() + pos_Increment), g.Point(mid_Mid.getX() + pos_Increment, mid_Mid.getY()), mid_Right, colour)
-                pos_Increment += 10
-        elif quadrant == 4:
-            colour = "white"
-            for i in range(5):
-                colour = colour_Picker(current_Colour, colour)
-                draw_Polygon(window, g.Point(bottom_Left.getX(), bottom_Left.getY() - pos_Increment), g.Point(mid_Mid.getX() - pos_Increment, mid_Mid.getY()), mid_Left, colour)
-                pos_Increment += 10
-        elif quadrant == 5:
-            for i in range(5):
-                colour = colour_Picker(current_Colour, colour)
-                draw_Polygon(window, g.Point(bottom_Left.getX() + pos_Increment, bottom_Left.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() + pos_Increment), bottom_Mid, colour)
-                pos_Increment += 10
-        elif quadrant == 6:
-            colour = current_Colour
-            for i in range(5):
-                colour = colour_Picker(current_Colour, colour)
-                draw_Polygon(window, mid_Right, g.Point(mid_Mid.getX() + pos_Increment, mid_Mid.getY()), g.Point(bottom_Right.getX(), bottom_Right.getY() - pos_Increment), colour)
-                pos_Increment += 10
-        elif quadrant == 7:
-            for i in range(5):
-                colour = colour_Picker(current_Colour, colour)
-                draw_Polygon(window, g.Point(bottom_Right.getX() - pos_Increment, bottom_Right.getY()), g.Point(mid_Mid.getX(), mid_Mid.getY() + pos_Increment), bottom_Mid, colour)
-                pos_Increment += 10
-
-        # Test code for optimisation
-        poly_Arg_List = [
-            (g.Point(top_Left.getX(), top_Left.getY() + pos_Increment),
-             g.Point(mid_Mid.getX() - pos_Increment, mid_Mid.getY()), mid_Left),
-            (g.Point(top_Left.getX() + pos_Increment, top_Left.getY()),
-             g.Point(mid_Mid.getX(), mid_Mid.getY() - pos_Increment), top_Mid),
-            (top_Mid, g.Point(top_Right.getX() - pos_Increment, top_Right.getY()),
-             g.Point(mid_Mid.getX(), mid_Mid.getY() - pos_Increment)),
-            (g.Point(top_Right.getX(), top_Right.getY() + pos_Increment),
-             g.Point(mid_Mid.getX() + pos_Increment, mid_Mid.getY()), mid_Right),
-            (g.Point(bottom_Left.getX(), bottom_Left.getY() - pos_Increment),
-             g.Point(mid_Mid.getX() - pos_Increment, mid_Mid.getY()), mid_Left),
-            (g.Point(bottom_Left.getX() + pos_Increment, bottom_Left.getY()),
-             g.Point(mid_Mid.getX(), mid_Mid.getY() + pos_Increment), bottom_Mid),
-            (mid_Right, g.Point(mid_Mid.getX() + pos_Increment, mid_Mid.getY()),
-             g.Point(bottom_Right.getX(), bottom_Right.getY() - pos_Increment)),
-            (g.Point(bottom_Right.getX() - pos_Increment, bottom_Right.getY()),
-             g.Point(mid_Mid.getX(), mid_Mid.getY() + pos_Increment), bottom_Mid)
-        ]
-
-        for quadrant in range(0, 1, 1):
-            quadrant += 1
-            pos_Increment = 0
-            for i in range(8):
-                colour = colour_Picker(current_Colour, colour)
-                if quadrant == 4:
-                    colour = "white"
-                elif quadrant == 6:
-                    colour = current_Colour
-                args = poly_Arg_List[i]
-                draw_Polygon(window, *args, colour)
-                pos_Increment += 10
+        for i in range(8):
+            colour = colour_Picker(current_Colour, colour)
+            if quadrant == 4:
+                colour = "white"
+            elif quadrant == 6:
+                colour = current_Colour
+            args = poly_Arg_List[i]
+            draw_Polygon(window, *args, colour)
+            pos_Increment += 10
 
 def drawLine(window, pos_X, pos_Y, colour):
     line = g.Line(pos_X, pos_Y)
