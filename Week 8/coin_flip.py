@@ -1,29 +1,32 @@
-import random as rand
+import random
+
 
 def getInputs():
     while True:
-        n_flips = int(input("How many coin flips: "))
+        inputs = input("How many times do you want to flip the coin:")
+        if inputs.isnumeric():
+            return int(inputs)
+        print("Incorrect values please try again")
 
-        if n_flips.isnumeric():
-            return n_flips
 
-def flip(index):
+def simulateFlips(count):
     flips = []
-    for i in range(index):
-        flips.append(rand.randint(0, 1))
+    for x in range(count):
+        flips.append(random.randint(0, 1))
     return flips
 
 
-def results(result):
-    head_counter = result.count(0) / 100
-    tail_counter = result.count(1) / 100
+def displayResults(results):
+    head_count = results.count(0) / 100
+    tail_count = results.count(1) / 100
+    print("There were {0} heads and {1} tails".format(head_count, tail_count))
 
-    print("Heads: ", head_counter, " Tails: ", tail_counter)
 
 def main():
-    index = getInputs()
-    flips = flip(index)
-    results(flips)
+    count = getInputs()
+    flips = simulateFlips(count)
+    displayResults(flips)
+
 
 if __name__ == '__main__':
     main()
