@@ -1,10 +1,12 @@
+subjects = []
+
 class person:
     def __init__(self, f_Name, s_Name, subject, _isAwesome):
         self.fName = f_Name
         self.sName = s_Name
         self.subject = subject
+        subjects.append(self.subject)
         self.isAwesome = bool(_isAwesome)
-
 
     def killMyself(person):
         isAllowed2Die = False
@@ -25,6 +27,8 @@ Bob = person("Bob", "Smith", ["Turfgrass Science"], True)
 def main():
     person.killMyself(Will)
     person.killMyself(Bob)
+
+    print(subjects)
 
 if __name__ == '__main__':
     main()
