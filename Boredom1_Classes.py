@@ -41,7 +41,8 @@ Thor = dog()
 
 
 '''
-if class eqiuals animal isAllowed2Die is automatically False
+Is there a way to access all classes? E.g
+if class name eqiuals animal isAllowed2Die is automatically False
 '''
 
 def main():
