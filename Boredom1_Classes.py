@@ -17,10 +17,9 @@ class Dog(Animal):
     isPet = True
 
     def __init__(self, breed):
+        Animal.__init__(self, "Canis", "Carnivore", "Dog", c_type="Unknown")
 
-        Animal.__init__(self, "canis", "carnivore", "dog", c_type="Unknown")
-
-        super().__init__(self, "canis", "carnivore", "dog")
+        super().__init__(self, "Canis", "Carnivore", "Dog")
         self.breed = breed
 
 class Person:
@@ -46,13 +45,13 @@ Will = Person("Will", "Greatest", ["Comp Sci"], True)
 Kewal = Person("Kewal", "Bitch-Boi", ["Maths"], True)
 Bob = Person("Bob", "Smith", ["Turfgrass Science"], False)
 
-Loki = Dog()
-Thor = Dog()
+Loki = Dog("Samoyed")
+Thor = Dog("Samoyed")
 
 
 '''
 Is there a way to access all classes? E.g
-if class name eqiuals animal isAllowed2Die is automatically False
+If class name eqiuals animal isAllowed2Die is automatically False
 '''
 
 def main():
