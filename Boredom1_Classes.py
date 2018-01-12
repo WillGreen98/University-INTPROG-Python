@@ -2,7 +2,7 @@ subjects = []
 
 isAllowed2Die = False
 
-class animal:
+class Animal:
     def __init__(self, genome, classes, bio_def, type):
         self.genome = genome
         self.a_class = classes
@@ -10,11 +10,11 @@ class animal:
         self.type = type
 
 
-class dog(animal):
-    animal.__init__(self, canis, carnivore, dog, breed)
+class Dog(Animal):
+    Animal.__init__(self, canis, carnivore, dog, breed="Unknown")
 
 
-class person:
+class Person:
     def __init__(self, f_Name, s_Name, subject, isAwesome):
         self.fName = f_Name
         self.sName = s_Name
@@ -32,12 +32,12 @@ class person:
         return killed
 
 
-Will = person("Will", "Greatest", ["Comp Sci"], True)
-Kewal = person("Kewal", "Bitch-Boi", ["Maths"], True)
-Bob = person("Bob", "Smith", ["Turfgrass Science"], False)
+Will = Person("Will", "Greatest", ["Comp Sci"], True)
+Kewal = Person("Kewal", "Bitch-Boi", ["Maths"], True)
+Bob = Person("Bob", "Smith", ["Turfgrass Science"], False)
 
-Loki = dog()
-Thor = dog()
+Loki = Dog()
+Thor = Dog()
 
 
 '''
@@ -48,8 +48,8 @@ if class name eqiuals animal isAllowed2Die is automatically False
 def main():
     print(subjects, "\n")
 
-    person.killMyself(Will)
-    person.killMyself(Kewal)
+    Person.killMyself(Will)
+    Person.killMyself(Kewal)
 
 if __name__ == '__main__':
     main()
