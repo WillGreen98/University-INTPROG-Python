@@ -1,34 +1,44 @@
 subjects = []
 
-isAllowed2Die = False
+isAllowed2Die = True
 
 class Animal:
-    def __init__(self, genome, classes, bio_def, type):
+    isAllowed2Die = False
+    isPet = bool
+
+    def __init__(self, genome, classes, bio_def, c_type):
         self.genome = genome
         self.a_class = classes
         self.bio_def = bio_def
-        self.type = type
+        self.type = c_type
 
 
 class Dog(Animal):
-    Animal.__init__(self, canis, carnivore, dog, breed="Unknown")
+    isPet = True
 
+    def __init__(self, breed):
+
+        Animal.__init__(self, "canis", "carnivore", "dog", c_type="Unknown")
+
+        super().__init__(self, "canis", "carnivore", "dog")
+        self.breed = breed
 
 class Person:
     def __init__(self, f_Name, s_Name, subject, isAwesome):
         self.fName = f_Name
         self.sName = s_Name
         self.subject = subject
+
         subjects.append(self.subject)
         self._isAwesome = bool(isAwesome)
 
     def killMyself(self):
         if self._isAwesome:
-            mystr = " is awesome, not allowed to be killed."
+            ToBkilledOrNotToBKilledThatIsTheQuestion = " is awesome, not allowed to be killed."
         else:
-            mystr = " is now dead."
+            ToBkilledOrNotToBKilledThatIsTheQuestion = " is now dead."
 
-        killed = print("{0}{1}".format(self.fName, mystr))
+        killed = print("{0}{1}".format(self.fName, ToBkilledOrNotToBKilledThatIsTheQuestion))
         return killed
 
 
