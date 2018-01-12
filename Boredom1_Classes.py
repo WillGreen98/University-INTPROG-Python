@@ -3,16 +3,15 @@ subjects = []
 isAllowed2Die = False
 
 class animal:
-    def __init__(self, genome, classes, bio_def, type, name):
+    def __init__(self, genome, classes, bio_def, type):
         self.genome = genome
         self.a_class = classes
         self.bio_def = bio_def
         self.type = type
-        self.name = name
 
 
 class dog(animal):
-    animal.__init__(self, canis, carnivore, dog, breed, input())
+    animal.__init__(self, canis, carnivore, dog, breed)
 
 
 class person:
@@ -37,7 +36,8 @@ Will = person("Will", "Green", ["Comp Sci"], True)
 Kewal = person("Kewal", "Rai", ["Maths"], True)
 Bob = person("Bob", "Smith", ["Turfgrass Science"], False)
 
-Samoyed = dog()
+Loki = dog()
+Thor = dog()
 
 
 '''
