@@ -1,34 +1,54 @@
 subjects = []
 
+isAllowed2Die = False
+
+class animal:
+    def __init__(self, genome, classes, bio_def, type, name):
+        self.genome = genome
+        self.a_class = classes
+        self.bio_def = bio_def
+        self.type = type
+        self.name = name
+
+
+class dog(animal):
+    animal.__init__(self, canis, carnivore, dog, breed, input())
+
+
 class person:
-    def __init__(self, f_Name, s_Name, subject, _isAwesome):
+    def __init__(self, f_Name, s_Name, subject, isAwesome):
         self.fName = f_Name
         self.sName = s_Name
         self.subject = subject
         subjects.append(self.subject)
-        self.isAwesome = bool(_isAwesome)
+        self._isAwesome = bool(isAwesome)
 
-    def killMyself(person):
-        isAllowed2Die = False
-        if person.isAwesome == "False":
-            isAllowed2Die = True
-            if isAllowed2Die == True:
-                mystr = " is now dead"
-            else:
-                mystr = " is awesome, not allowed to be killed."
+    def killMyself(self):
+        if self._isAwesome:
+            mystr = " is awesome, not allowed to be killed."
+        else:
+            mystr = " is now dead."
 
-            killed = print("{0}{1}".format(person.fName, mystr))
-
+        killed = print("{0}{1}".format(self.fName, mystr))
         return killed
 
-Will = person("Will", "Green", ["Comp Sci"], False)
-Bob = person("Bob", "Smith", ["Turfgrass Science"], True)
+
+Will = person("Will", "Green", ["Comp Sci"], True)
+Kewal = person("Kewal", "Rai", ["Maths"], True)
+Bob = person("Bob", "Smith", ["Turfgrass Science"], False)
+
+Samoyed = dog()
+
+
+'''
+if class eqiuals animal isAllowed2Die is automatically False
+'''
 
 def main():
-    person.killMyself(Will)
-    person.killMyself(Bob)
+    print(subjects, "\n")
 
-    print(subjects)
+    person.killMyself(Will)
+    person.killMyself(Kewal)
 
 if __name__ == '__main__':
     main()
