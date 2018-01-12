@@ -32,8 +32,8 @@ class person:
         return killed
 
 
-Will = person("Will", "Green", ["Comp Sci"], True)
-Kewal = person("Kewal", "Rai", ["Maths"], True)
+Will = person("Will", "Greatest", ["Comp Sci"], True)
+Kewal = person("Kewal", "Bitch-Boi", ["Maths"], True)
 Bob = person("Bob", "Smith", ["Turfgrass Science"], False)
 
 Loki = dog()
