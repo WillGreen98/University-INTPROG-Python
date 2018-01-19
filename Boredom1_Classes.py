@@ -17,8 +17,6 @@ class Dog(Animal):
     isPet = True
 
     def __init__(self, breed):
-        Animal.__init__(self, "Canis", "Carnivore", "Dog", c_type="Unknown")
-
         super().__init__(self, "Canis", "Carnivore", "Dog")
         self.breed = breed
 
