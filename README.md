@@ -1,5 +1,5 @@
-# University - Introduction To Programming.
-This is a repo for all programming projects
+# University - Introduction To Programming (Python).
+This is a repo for all Python programming projects
 completed within my INTPROG module.
 
 This module will contain
@@ -8,4 +8,3 @@ This module will contain
 2. Practical Session Code
 3. Random "Boredom(N)_TOPIC" files
 4. Coursework
-
