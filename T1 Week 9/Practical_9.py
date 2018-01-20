@@ -32,13 +32,11 @@ def drawHexagon():
 
     window = g.GraphWin("Hexagon", 400, 400)
 
-    for i in range(0, 5, 1):
+    for i in range(0, 5):
         point[i] = window.getMouse()
 
-        return point[i]
-
-    points = point
-    poly = g.Polygon(g.Point(points).getX()).draw(window).setFill("red")
+    poly = g.Polygon(point.getX()).draw(window).setFill("red")
+    window.getMouse()
 
 displayDate(14, 2, 2011)
 wordLength()
