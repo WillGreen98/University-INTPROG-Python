@@ -28,17 +28,39 @@ def wordLength(words = []):
 
 # TODO doesn't work
 def drawHexagon():
-    point = []
+    points = []
 
     window = g.GraphWin("Hexagon", 400, 400)
 
     for i in range(0, 5):
-        point[i] = window.getMouse()
+        point = window.getMouse()
+        points.append(point[i])
 
-    poly = g.Polygon(point.getX()).draw(window).setFill("red")
+    poly = g.Polygon(points).draw(window).setFill("red")
     window.getMouse()
 
-displayDate(14, 2, 2011)
-wordLength()
-drawHexagon()
 
+def testMarks():
+    marks = []
+    grades = [0, 1, 2, 3, 4, 5]
+
+    marking = True
+    while marking:
+        grade = input("(Press Q to quit) Enter mark: ")
+        marks.append(int(grade))
+
+        if grade == '6' or grade == 'Q':
+            for i in range(6):
+                counter = marks.count(grades[i])
+                print("{0} students got {1} marks".format(counter, grades[i]))
+            break
+
+
+
+
+# displayDate(14, 2, 2011)
+# wordLength()
+# drawHexagon()
+
+
+testMarks()
