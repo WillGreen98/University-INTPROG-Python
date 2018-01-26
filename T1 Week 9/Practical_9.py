@@ -46,21 +46,25 @@ def testMarks():
 
     marking = True
     while marking:
-        grade = input("(Press Q to quit) Enter mark: ")
+        grade = input("(Press 6 to quit) Enter mark: ")
         marks.append(int(grade))
 
-        if grade == '6' or grade == 'Q':
+        if grade == '6':
             for i in range(6):
                 counter = marks.count(grades[i])
                 print("{0} students got {1} marks".format(counter, grades[i]))
             break
 
-
+# TODO doesn't work
+def drawBarChart(*args):
+    for rows in range(args.__len__()):
+        for cols in range(args):
+            print(("#"*cols) * rows)
 
 
 # displayDate(14, 2, 2011)
 # wordLength()
 # drawHexagon()
+# testMarks()
 
-
-testMarks()
+drawBarChart(4)
