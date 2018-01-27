@@ -32,13 +32,15 @@ def drawHexagon():
 
     window = g.GraphWin("Hexagon", 400, 400)
 
-    for i in range(0, 5):
-        point = window.getMouse()
-        points.append(point[i])
+    point1 = window.getMouse()
+    point2 = window.getMouse()
+    point3 = window.getMouse()
+    point4 = window.getMouse()
+    point5 = window.getMouse()
+    point6 = window.getMouse()
 
-    poly = g.Polygon(points).draw(window).setFill("red")
+    poly = g.Polygon(point1, point2, point3, point4, point5, point6).draw(window).setFill("red")
     window.getMouse()
-
 
 def testMarks():
     marks = []
@@ -46,10 +48,10 @@ def testMarks():
 
     marking = True
     while marking:
-        grade = input("(Press 6 to quit) Enter mark: ")
-        marks.append(int(grade))
+        usr_In = input("(Press 6 to quit) Enter mark: ")
+        marks.append(int(usr_In))
 
-        if grade == '6':
+        if usr_In == '6':
             for i in range(6):
                 counter = marks.count(grades[i])
                 print("{0} students got {1} marks".format(counter, grades[i]))
