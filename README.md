@@ -1,4 +1,4 @@
-# University - Introduction To Programming (Python).
+# University - Introduction To Programming (Python)
 This is a repo for all Python programming projects
 completed within my INTPROG module.
 
