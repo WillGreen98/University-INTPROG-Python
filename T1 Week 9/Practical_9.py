@@ -59,14 +59,13 @@ def testMarks():
 
 # TODO doesn't work
 def drawBarChart(*args):
-    for rows in range(args.__len__()):
-        for cols in range(args):
-            print(("#"*cols) * rows)
-
+    for rows in range(len(args)):
+        for cols in args:
+            print("#")
 
 # displayDate(14, 2, 2011)
 # wordLength()
 # drawHexagon()
 # testMarks()
 
-drawBarChart(4)
+drawBarChart(3)
