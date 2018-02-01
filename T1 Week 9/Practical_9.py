@@ -57,17 +57,17 @@ def testMarks():
                 print("{0} students got {1} marks".format(counter, grades[i]))
             break
 
-# TODO doesn't work
 def drawBarChart(*args):
-    for i in range(max(args)):  # iterate on even numbered indexes (to get the *'s)
-        for column in args:  # iterate over the list of strings
-            if i < len(column):
-                print(column[i]),  # the comma means no newline will be printed
+    for i in range(max(args)):
+        for row in range(len(args)):
+            if args[row] > i:
+                print("#", end="")
             else:
-                print(" "),  # put spaces in for missing values
-        print()
+                print(" ", end="")
+            print(" ", end="")
+        print("\n", end="")
 
-    # displayDate(14, 2, 2011)
+# displayDate(14, 2, 2011)
 # wordLength()
 # drawHexagon()
 # testMarks()
