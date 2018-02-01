@@ -1,8 +1,3 @@
-#-------------------------------------------------------------------------------
-# tennis.py - a program to illustrate simulation and program design
-#-------------------------------------------------------------------------------
-
-
 def main():
     prWinPt, num_Sets = getInputs()
 

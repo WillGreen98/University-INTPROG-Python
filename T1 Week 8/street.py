@@ -1,9 +1,4 @@
-#-------------------------------------------------------------------------------
-# house.py - a simple program to draw a house
-#-------------------------------------------------------------------------------
-
 from graphics import *
-
 
 def main():
     doorColour, lightsOn, house_number, window_size = getInputs()
