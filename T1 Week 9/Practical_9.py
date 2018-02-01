@@ -59,13 +59,17 @@ def testMarks():
 
 # TODO doesn't work
 def drawBarChart(*args):
-    for rows in range(len(args)):
-        for cols in args:
-            print("#")
+    for i in range(max(args)):  # iterate on even numbered indexes (to get the *'s)
+        for column in args:  # iterate over the list of strings
+            if i < len(column):
+                print(column[i]),  # the comma means no newline will be printed
+            else:
+                print(" "),  # put spaces in for missing values
+        print()
 
-# displayDate(14, 2, 2011)
+    # displayDate(14, 2, 2011)
 # wordLength()
 # drawHexagon()
 # testMarks()
 
-drawBarChart(3)
+drawBarChart(3, 5, 7)
