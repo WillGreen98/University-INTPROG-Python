@@ -11,41 +11,41 @@ This module will contain
 
 ## Week 1
 
-Writing Simple Programs
+* Writing Simple Programs
 
 ## Week 2
 
-Computing With Data
-Computing With Numbers
+* Computing With Data
+* Computing With Numbers
 
 ## Week 3
 
 Graphics & Objects
-Writing High-Quality Code
+* Writing High-Quality Code
 
 ## Week 4
 
-Computing With Strings
-Using Files
+* Computing With Strings
+* Using Files
 
 ## Week 5
 
-Defining Functions
+* Defining Functions
 
 ## Week 6
 
-Decision Structures
-Using If Statements & For Loops
+* Decision Structures
+* Using If Statements & For Loops
 
 ## Week 7
 
-Introduction To While Loops
-Booleans & Further Loops
+* Introduction To While Loops
+* Booleans & Further Loops
 
 ## Week 8
 
-Design & Simulation
+* Design & Simulation
 
 ## Week 9
 
-Using Lists
+* Using Lists
