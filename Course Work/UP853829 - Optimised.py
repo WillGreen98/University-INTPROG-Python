@@ -107,7 +107,7 @@ def draw_Patch_Final(window, pos_X, pos_Y, colour):
         drawLine(window, g.Point(pos_X + i, pos_Y + 100), g.Point(pos_X + 100, pos_Y + i), colour)
         drawLine(window, g.Point(pos_X, pos_Y + 100 - i), g.Point(pos_X + 100 - i, pos_Y), colour)
 
-def main():
+def display():
     x = 0
 
     dim, col_Array = getInput()
@@ -124,6 +124,9 @@ def main():
                 x = 0
 
     window.getMouse()
+
+def main():
+    display()
 
 if __name__ == '__main__':
     main()
