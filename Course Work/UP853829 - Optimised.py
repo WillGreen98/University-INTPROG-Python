@@ -7,7 +7,7 @@ def getInput():
     colour_Choices = []
     val_Dimensions = [5, 7, 9, 11]
     valid_colours = ["red", "orange", "green", "blue", "magenta", "cyan", "brown", "pink"]  # PINK ISN'T A COLOUR!!!
-    
+
     while True:
         dimension = input("Enter dimension: ")
 
