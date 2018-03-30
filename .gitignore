@@ -193,3 +193,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+*.iml
+*.json
+*.iml
