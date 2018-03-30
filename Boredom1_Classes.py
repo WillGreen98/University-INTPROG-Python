@@ -32,8 +32,10 @@ class Dog(Animal):
 
     def sit(duration):
         import time
-        
-        print("I am now sitting")
+        t = time.process_time()
+        print("I am now sitting, I have been sitting for: {0}".format(elapsed_time))
+
+        elapsed_time = time.process_time() - t
         
     def roll_Over():
         print("My belly is showing")
@@ -50,11 +52,11 @@ class Dog(Animal):
             print("Z")
         for x in range(0, y*2, 1):
             print("O")
-        for x in range(0, y-(y/2), 1):
+        for x in range(0, y/2, 1):
             print("M")
-        for x in range(0, y*(y-1/y), 1):
+        for x in range(0, y-1, 1):
             print("I")
-        for x in range(0, y-(y*(1/3)), 1):
+        for x in range(0, y*(2/3), 1):
             print("E")
         for x in range(0, y, 1):
             print("S")
@@ -63,9 +65,9 @@ class Dog(Animal):
         print("*DRIBBLES ON FLOOR*")
         
 class Person:
-    def __init__(self, f_Name, s_Name, subject, isAwesome):
+    def __init__(self, f_Name, nickName, subject, isAwesome):
         self.fName = f_Name
-        self.sName = s_Name
+        self.sName = nickName
         self.subject = subject
 
         subjects.append(self.subject)
@@ -80,7 +82,7 @@ class Person:
         killed = "{0}{1}".format(self.fName, ToBkilledOrNotToBKilledThatIsTheQuestion)
         return killed
 
-Albert = Person("Albert", "ATacoMan", ["Comp Sci & AI"], True)
+Albert = Person("Albert", "Hung like a Moose, Hanging from a Noose", ["Comp Sci & AI"], True)
 Kewal = Person("Kewal", "Bitch-Boi", ["Maths"], True)
 Will = Person("Will", "The Bald Bean", ["Comp Sci"], False)
 Xho = Person("Xho", "Squidward", ["Sociology & Pysch"], True)
