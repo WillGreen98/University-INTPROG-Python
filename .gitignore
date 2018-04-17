@@ -196,3 +196,4 @@ venv.bak/
 *.iml
 *.json
 *.iml
+.idea/Practicals.iml
