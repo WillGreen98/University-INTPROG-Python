@@ -198,3 +198,5 @@ venv.bak/
 *.iml
 .idea/Practicals.iml
 *.iml
+*.xml
+*.iml

@@ -1,3 +1,5 @@
+import time
+
 subjects = []
 
 isAllowed2Die = True
@@ -20,49 +22,22 @@ class Dog(Animal):
         self.name = name
         self.breed = breed
 
-    def bork(d):
+    def bork(self, d):
         if d == "quiet":
-            print("Bork Bork Bork... My name is: {0}".format(name))
+            print("Bork Bork Bork... My name is: {0}".format(self.name))
         elif d == "loud":
-            print("BORK BORK BORK... MY NAME IS: {0}".format(name))
+            print("BORK BORK BORK... MY NAME IS: {0}".format(self.name))
         elif d == "sassy":
-            print("Bork Bork Boooork... My name is: {0}".format(name))
+            print("Bork Bork Boooork... My name is: {0}".format(self.name))
         else:
             print("Bork")
 
-    def sit(duration):
-        import time
+    def sit(self, duration):
         t = time.process_time()
-        print("I am now sitting, I have been sitting for: {0}".format(elapsed_time))
+        print("I am now sitting, I have been sitting for: {0}".format(time.process_time() - duration))
 
-        elapsed_time = time.process_time() - t
-        
-    def roll_Over():
-        print("My belly is showing")
-        
-    def bundle():
-        print("CUDDLES")
-        
-    def fetch():
-        print("Did you throw something?")
-
-    def zoomies():
-        y = 6
-        for x in range(0, y, 1):
-            print("Z")
-        for x in range(0, y*2, 1):
-            print("O")
-        for x in range(0, y/2, 1):
-            print("M")
-        for x in range(0, y-1, 1):
-            print("I")
-        for x in range(0, y*(2/3), 1):
-            print("E")
-        for x in range(0, y, 1):
-            print("S")
-    
-    def getTheFuckAwayFromMyPizza():
-        print("*DRIBBLES ON FLOOR*")
+    def getTheFuckAwayFromMyPizza(self):
+        return "DRIBBLES ON FLOOR"
         
 class Person:
     def __init__(self, f_Name, nickName, subject, isAwesome):
@@ -82,10 +57,8 @@ class Person:
         killed = "{0}{1}".format(self.fName, ToBkilledOrNotToBKilledThatIsTheQuestion)
         return killed
 
-Albert = Person("Albert", "Hung like a Moose, Hanging from a Noose", ["Comp Sci & AI"], True)
 Kewal = Person("Kewal", "Bitch-Boi", ["Maths"], True)
 Will = Person("Will", "The Bald Bean", ["Comp Sci"], False)
-Xho = Person("Xho", "Squidward", ["Sociology & Pysch"], True)
 
 Crumble = Dog("Crumble", "Wire-Haired Sausage")
 Loki = Dog("Loki", "Samoyed")
@@ -95,7 +68,9 @@ Thor = Dog("Thor", "Samoyed")
 def main():
     print(subjects, "\n")
 
-    Person.killMyself
+    print(Kewal.killMyself())
+    print(Will.killMyself())
+
 
 if __name__ == '__main__':
     main()
