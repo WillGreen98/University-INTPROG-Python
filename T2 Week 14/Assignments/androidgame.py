@@ -4,9 +4,11 @@ from BabyAndroid import BabyAndroid
 
 import math
 
+
 def main():
     playArea, and1, and2 = drawScene()
     playGame(playArea, and1, and2)
+
 
 def drawScene():
 
@@ -17,12 +19,12 @@ def drawScene():
 
     return window, androidNo1, androidNo2
 
+
 def playGame(win, android1, android2):
-    
+
     message = Text(Point(0.5, 0.5), "")
     message.setSize(20)
 
-    
     lost = False
 
     while not lost:
@@ -43,28 +45,29 @@ def playGame(win, android1, android2):
             android2.moveAndroid("Up")
         elif key == "r":
             android2.moveAndroid("Down")
-            
+
         android1Centre = android1.getHeadCentre()
         android2Centre = android2.getHeadCentre()
-        
+
         if distanceBetweenPoints(android1Centre, android2Centre) > 0.4:
             android2.cry()
         else:
             android2.stopCrying()
-        
+
         if android1Centre.getX() < 0 or android1Centre.getX() > 1 or \
            android1Centre.getY() < 0 or android1Centre.getY() > 1:
             lost = True
             message.setText("Android 1 Hit the Wall!")
         elif android2Centre.getX() < 0 or android2Centre.getX() > 1 or \
-           android2Centre.getY() < 0 or android2Centre.getY() > 1:
+                android2Centre.getY() < 0 or android2Centre.getY() > 1:
             lost = True
             message.setText("Android 2 Hit the Wall!")
 
     message.draw(win)
 
+
 def distanceBetweenPoints(point1, point2):
     return math.sqrt(((point2.getX()-point1.getX())**2) + ((point2.getY()-point1.getY())**2))
 
-main()
 
+main()
